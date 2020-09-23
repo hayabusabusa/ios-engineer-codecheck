@@ -8,9 +8,13 @@
 
 import UIKit
 
-class SearchRepositoriesViewController: UITableViewController, UISearchBarDelegate {
+class SearchRepositoriesViewController: UITableViewController {
+    
+    // MARK: IBOutlet
     
     @IBOutlet weak var searchBar: UISearchBar!
+    
+    // MARK: Properties
     
     var githubAPIURL: String!
     var urlSessionTask: URLSessionTask?
@@ -18,12 +22,27 @@ class SearchRepositoriesViewController: UITableViewController, UISearchBarDelega
     var repositories: [[String: Any]] = []
     var selectedindex: Int!
     
+    // MARK: Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        configureSearchBar()
+    }
+}
+
+// MARK: - Configurations
+
+extension SearchRepositoriesViewController {
+    
+    private func configureSearchBar() {
         searchBar.text = "GitHubのリポジトリを検索できるよー"
         searchBar.delegate = self
     }
+}
+
+// MARK: - SearchBar Delegate
+
+extension SearchRepositoriesViewController: UISearchBarDelegate {
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         // ↓こうすれば初期のテキストを消せる
@@ -54,31 +73,45 @@ class SearchRepositoriesViewController: UITableViewController, UISearchBarDelega
             urlSessionTask?.resume()
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Detail" {
-            let repositoryDetailViewController = segue.destination as! RepositoryDetailViewController
-            repositoryDetailViewController.searchRepositoriesViewController = self
-        }
-    }
+}
+
+// MARK: - TableView DataSource
+
+extension SearchRepositoriesViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return repositories.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        let repository = repositories[indexPath.row]
-        cell.textLabel?.text = repository["full_name"] as? String ?? ""
-        cell.detailTextLabel?.text = repository["language"] as? String ?? ""
-        cell.tag = indexPath.row
+        let cell                    = UITableViewCell()
+        let repository              = repositories[indexPath.row]
+        cell.tag                    = indexPath.row
+        cell.textLabel?.text        = repository["full_name"] as? String ?? ""
+        cell.detailTextLabel?.text  = repository["language"] as? String ?? ""
         return cell
-        
     }
+}
+
+// MARK: - TableView Delegate
+
+extension SearchRepositoriesViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 画面遷移時に呼ばれる
         selectedindex = indexPath.row
         performSegue(withIdentifier: "Detail", sender: self)
+    }
+}
+
+// MARK: - Prepare for segue
+
+extension SearchRepositoriesViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Detail" {
+            let repositoryDetailViewController = segue.destination as! RepositoryDetailViewController
+            repositoryDetailViewController.searchRepositoriesViewController = self
+        }
     }
 }
