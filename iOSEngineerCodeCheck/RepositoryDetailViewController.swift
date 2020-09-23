@@ -40,6 +40,7 @@ extension RepositoryDetailViewController {
     private func configureLabels() {
         let repository = searchRepositoriesViewController.repositories[searchRepositoriesViewController.selectedindex]
         
+        titleLabel.text         = repository["full_name"] as? String
         languageLabel.text      = "Written in \(repository["language"] as? String ?? "")"
         starsLabel.text         = "\(repository["stargazers_count"] as? Int ?? 0) stars"
         watchersLabel.text      = "\(repository["wachers_count"] as? Int ?? 0) watchers"
@@ -54,9 +55,6 @@ extension RepositoryDetailViewController {
     
     private func fetchAvatarImage() {
         let repository = searchRepositoriesViewController.repositories[searchRepositoriesViewController.selectedindex]
-        
-        titleLabel.text = repository["full_name"] as? String
-        
         guard let owner = repository["owner"] as? [String: Any],
             let imageURL = owner["avatar_url"] as? String else {
                 return
