@@ -18,9 +18,7 @@ class SearchRepositoriesViewController: UITableViewController {
     
     private let githubAPIURL = "https://api.github.com/search/repositories"
     private var urlSessionTask: URLSessionTask?
-    
-    var repositories: [[String: Any]] = []
-    var selectedindex: Int!
+    private var repositories: [[String: Any]] = []
     
     // MARK: Lifecycle
     
@@ -35,8 +33,8 @@ class SearchRepositoriesViewController: UITableViewController {
 extension SearchRepositoriesViewController {
     
     private func configureSearchBar() {
-        searchBar.text = "GitHubのリポジトリを検索できるよー"
-        searchBar.delegate = self
+        searchBar.text      = "GitHubのリポジトリを検索できるよー"
+        searchBar.delegate  = self
     }
 }
 
@@ -66,13 +64,12 @@ extension SearchRepositoriesViewController: UISearchBarDelegate {
         
         urlSessionTask = URLSession.shared.dataTask(with: url) { (data, res, err) in
             do {
-                guard let jsonObject = try JSONSerialization.jsonObject(with: data!) as? [String: Any],
-                      let items = jsonObject["items"] as? [[String: Any]] else {
+                guard let jsonObject    = try JSONSerialization.jsonObject(with: data!) as? [String: Any],
+                      let items         = jsonObject["items"] as? [[String: Any]] else {
                         return
                 }
                 
                 self.repositories = items
-                
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -108,8 +105,6 @@ extension SearchRepositoriesViewController {
 extension SearchRepositoriesViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // NOTE: 詳細画面で選択したリポジトリを判別するために `indexPath.row` を保持.
-        selectedindex = indexPath.row
         performSegue(withIdentifier: "Detail", sender: self)
     }
 }
@@ -120,9 +115,11 @@ extension SearchRepositoriesViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "Detail",
-              let repositoryDetailViewController = segue.destination as? RepositoryDetailViewController else {
+              let selectedIndex = tableView.indexPathForSelectedRow?.row else {
             return
         }
-        repositoryDetailViewController.searchRepositoriesViewController = self
+        
+        let repositoryDetailViewController          = segue.destination as? RepositoryDetailViewController
+        repositoryDetailViewController?.repository  = repositories[selectedIndex]
     }
 }
