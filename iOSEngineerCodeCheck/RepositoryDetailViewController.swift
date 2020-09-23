@@ -57,15 +57,16 @@ extension RepositoryDetailViewController {
         
         titleLabel.text = repository["full_name"] as? String
         
-        if let owner = repository["owner"] as? [String: Any] {
-            if let imageURL = owner["avatar_url"] as? String {
-                URLSession.shared.dataTask(with: URL(string: imageURL)!) { (data, res, err) in
-                    let image = UIImage(data: data!)!
-                    DispatchQueue.main.async {
-                        self.avatarImageView.image = image
-                    }
-                }.resume()
-            }
+        guard let owner = repository["owner"] as? [String: Any],
+            let imageURL = owner["avatar_url"] as? String else {
+                return
         }
+        
+        URLSession.shared.dataTask(with: URL(string: imageURL)!) { (data, res, err) in
+            let image = UIImage(data: data!)!
+            DispatchQueue.main.async {
+                self.avatarImageView.image = image
+            }
+        }.resume()
     }
 }

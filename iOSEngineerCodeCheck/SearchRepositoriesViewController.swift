@@ -45,7 +45,7 @@ extension SearchRepositoriesViewController {
 extension SearchRepositoriesViewController: UISearchBarDelegate {
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        // ↓こうすれば初期のテキストを消せる
+        // NOTE: SearchBar タップ時にテキストフィールドを空にする.
         searchBar.text = ""
         return true
     }
@@ -60,16 +60,18 @@ extension SearchRepositoriesViewController: UISearchBarDelegate {
         if searchKeyword.count != 0 {
             githubAPIURL = "https://api.github.com/search/repositories?q=\(searchKeyword!)"
             urlSessionTask = URLSession.shared.dataTask(with: URL(string: githubAPIURL)!) { (data, res, err) in
-                if let obj = try! JSONSerialization.jsonObject(with: data!) as? [String: Any] {
-                    if let items = obj["items"] as? [[String: Any]] {
-                    self.repositories = items
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
-                    }
+                guard let jsonObject = try! JSONSerialization.jsonObject(with: data!) as? [String: Any],
+                    let items = jsonObject["items"] as? [[String: Any]] else {
+                        return
+                }
+                
+                self.repositories = items
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
                 }
             }
-            // これ呼ばなきゃリストが更新されません
+            // NOTE: `resume()` でタスクを実行し、API へリクエストを送信する.
             urlSessionTask?.resume()
         }
     }
@@ -98,7 +100,7 @@ extension SearchRepositoriesViewController {
 extension SearchRepositoriesViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // 画面遷移時に呼ばれる
+        // NOTE: 詳細画面で選択したリポジトリを判別するために `indexPath.row` を保持.
         selectedindex = indexPath.row
         performSegue(withIdentifier: "Detail", sender: self)
     }
@@ -109,9 +111,10 @@ extension SearchRepositoriesViewController {
 extension SearchRepositoriesViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Detail" {
-            let repositoryDetailViewController = segue.destination as! RepositoryDetailViewController
-            repositoryDetailViewController.searchRepositoriesViewController = self
+        guard segue.identifier == "Detail" else {
+            return
         }
+        let repositoryDetailViewController = segue.destination as! RepositoryDetailViewController
+        repositoryDetailViewController.searchRepositoriesViewController = self
     }
 }
