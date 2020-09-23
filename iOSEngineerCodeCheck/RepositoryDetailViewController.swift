@@ -10,6 +10,8 @@ import UIKit
 
 class RepositoryDetailViewController: UIViewController {
     
+    // MARK: IBOutlet
+    
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var languageLabel: UILabel!
@@ -18,23 +20,39 @@ class RepositoryDetailViewController: UIViewController {
     @IBOutlet weak var forksLabel: UILabel!
     @IBOutlet weak var openIssuesLabel: UILabel!
     
+    // MARK: Properties
+    
     var searchRepositoriesViewController: SearchRepositoriesViewController!
+    
+    // MARK: Lifecycle
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configureLabels()
+        fetchAvatarImage()
+    }
+}
+
+// MARK: - Configurations
+
+extension RepositoryDetailViewController {
+    
+    private func configureLabels() {
         let repository = searchRepositoriesViewController.repositories[searchRepositoriesViewController.selectedindex]
         
-        languageLabel.text = "Written in \(repository["language"] as? String ?? "")"
-        starsLabel.text = "\(repository["stargazers_count"] as? Int ?? 0) stars"
-        watchersLabel.text = "\(repository["wachers_count"] as? Int ?? 0) watchers"
-        forksLabel.text = "\(repository["forks_count"] as? Int ?? 0) forks"
-        openIssuesLabel.text = "\(repository["open_issues_count"] as? Int ?? 0) open issues"
-        
-        fetchImage()
+        languageLabel.text      = "Written in \(repository["language"] as? String ?? "")"
+        starsLabel.text         = "\(repository["stargazers_count"] as? Int ?? 0) stars"
+        watchersLabel.text      = "\(repository["wachers_count"] as? Int ?? 0) watchers"
+        forksLabel.text         = "\(repository["forks_count"] as? Int ?? 0) forks"
+        openIssuesLabel.text    = "\(repository["open_issues_count"] as? Int ?? 0) open issues"
     }
+}
+
+// MARK: - Fetch avatar image
+
+extension RepositoryDetailViewController {
     
-    func fetchImage() {
+    private func fetchAvatarImage() {
         let repository = searchRepositoriesViewController.repositories[searchRepositoriesViewController.selectedindex]
         
         titleLabel.text = repository["full_name"] as? String
