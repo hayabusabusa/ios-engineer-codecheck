@@ -58,7 +58,7 @@ class SearchRepositoriesViewController: UITableViewController, UISearchBarDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Detail" {
             let repositoryDetailViewController = segue.destination as! RepositoryDetailViewController
-            repositoryDetailViewController.vc1 = self
+            repositoryDetailViewController.searchRepositoriesViewController = self
         }
     }
     
