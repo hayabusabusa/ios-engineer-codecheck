@@ -12,13 +12,13 @@ class SearchRepositoriesViewController: UITableViewController {
     
     // MARK: IBOutlet
     
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet private weak var searchBar: UISearchBar!
     
     // MARK: Properties
     
-    var githubAPIURL: String!
-    var urlSessionTask: URLSessionTask?
-    var searchKeyword: String!
+    private let githubAPIURL = "https://api.github.com/search/repositories"
+    private var urlSessionTask: URLSessionTask?
+    
     var repositories: [[String: Any]] = []
     var selectedindex: Int!
     
@@ -55,13 +55,19 @@ extension SearchRepositoriesViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchKeyword = searchBar.text!
+        guard let searchKeyword = searchBar.text,
+              searchKeyword.count != 0 else {
+            return
+        }
         
-        if searchKeyword.count != 0 {
-            githubAPIURL = "https://api.github.com/search/repositories?q=\(searchKeyword!)"
-            urlSessionTask = URLSession.shared.dataTask(with: URL(string: githubAPIURL)!) { (data, res, err) in
-                guard let jsonObject = try! JSONSerialization.jsonObject(with: data!) as? [String: Any],
-                    let items = jsonObject["items"] as? [[String: Any]] else {
+        guard let url = URL(string: githubAPIURL + "?q=" + searchKeyword) else {
+            return
+        }
+        
+        urlSessionTask = URLSession.shared.dataTask(with: url) { (data, res, err) in
+            do {
+                guard let jsonObject = try JSONSerialization.jsonObject(with: data!) as? [String: Any],
+                      let items = jsonObject["items"] as? [[String: Any]] else {
                         return
                 }
                 
@@ -70,10 +76,12 @@ extension SearchRepositoriesViewController: UISearchBarDelegate {
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
+            } catch {
+                print(error)
             }
-            // NOTE: `resume()` でタスクを実行し、API へリクエストを送信する.
-            urlSessionTask?.resume()
         }
+        // NOTE: `resume()` でタスクを実行し、API へリクエストを送信する.
+        urlSessionTask?.resume()
     }
 }
 
@@ -111,10 +119,10 @@ extension SearchRepositoriesViewController {
 extension SearchRepositoriesViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "Detail" else {
+        guard segue.identifier == "Detail",
+              let repositoryDetailViewController = segue.destination as? RepositoryDetailViewController else {
             return
         }
-        let repositoryDetailViewController = segue.destination as! RepositoryDetailViewController
         repositoryDetailViewController.searchRepositoriesViewController = self
     }
 }
