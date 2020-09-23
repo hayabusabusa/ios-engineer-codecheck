@@ -58,7 +58,11 @@ extension RepositoryDetailViewController {
         }
         
         URLSession.shared.dataTask(with: URL(string: imageURL)!) { (data, res, err) in
-            let image = UIImage(data: data!)!
+            guard let data  = data,
+                  let image = UIImage(data: data) else {
+                return
+            }
+            
             DispatchQueue.main.async {
                 self.avatarImageView.image = image
             }
