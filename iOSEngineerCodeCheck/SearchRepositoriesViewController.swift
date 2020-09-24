@@ -12,15 +12,13 @@ class SearchRepositoriesViewController: UITableViewController {
     
     // MARK: IBOutlet
     
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet private weak var searchBar: UISearchBar!
     
     // MARK: Properties
     
-    var githubAPIURL: String!
-    var urlSessionTask: URLSessionTask?
-    var searchKeyword: String!
-    var repositories: [[String: Any]] = []
-    var selectedindex: Int!
+    private let githubAPIURL = "https://api.github.com/search/repositories"
+    private var urlSessionTask: URLSessionTask?
+    private var repositories: [[String: Any]] = []
     
     // MARK: Lifecycle
     
@@ -35,8 +33,8 @@ class SearchRepositoriesViewController: UITableViewController {
 extension SearchRepositoriesViewController {
     
     private func configureSearchBar() {
-        searchBar.text = "GitHubのリポジトリを検索できるよー"
-        searchBar.delegate = self
+        searchBar.text      = "GitHubのリポジトリを検索できるよー"
+        searchBar.delegate  = self
     }
 }
 
@@ -55,25 +53,32 @@ extension SearchRepositoriesViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchKeyword = searchBar.text!
+        guard let searchKeyword = searchBar.text,
+              searchKeyword.count != 0 else {
+            return
+        }
         
-        if searchKeyword.count != 0 {
-            githubAPIURL = "https://api.github.com/search/repositories?q=\(searchKeyword!)"
-            urlSessionTask = URLSession.shared.dataTask(with: URL(string: githubAPIURL)!) { (data, res, err) in
-                guard let jsonObject = try! JSONSerialization.jsonObject(with: data!) as? [String: Any],
-                    let items = jsonObject["items"] as? [[String: Any]] else {
+        guard let url = URL(string: githubAPIURL + "?q=" + searchKeyword) else {
+            return
+        }
+        
+        urlSessionTask = URLSession.shared.dataTask(with: url) { (data, res, err) in
+            do {
+                guard let jsonObject    = try JSONSerialization.jsonObject(with: data!) as? [String: Any],
+                      let items         = jsonObject["items"] as? [[String: Any]] else {
                         return
                 }
                 
                 self.repositories = items
-                
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
+            } catch {
+                print(error)
             }
-            // NOTE: `resume()` でタスクを実行し、API へリクエストを送信する.
-            urlSessionTask?.resume()
         }
+        // NOTE: `resume()` でタスクを実行し、API へリクエストを送信する.
+        urlSessionTask?.resume()
     }
 }
 
@@ -100,8 +105,6 @@ extension SearchRepositoriesViewController {
 extension SearchRepositoriesViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // NOTE: 詳細画面で選択したリポジトリを判別するために `indexPath.row` を保持.
-        selectedindex = indexPath.row
         performSegue(withIdentifier: "Detail", sender: self)
     }
 }
@@ -111,10 +114,12 @@ extension SearchRepositoriesViewController {
 extension SearchRepositoriesViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "Detail" else {
+        guard segue.identifier == "Detail",
+              let selectedIndex = tableView.indexPathForSelectedRow?.row else {
             return
         }
-        let repositoryDetailViewController = segue.destination as! RepositoryDetailViewController
-        repositoryDetailViewController.searchRepositoriesViewController = self
+        
+        let repositoryDetailViewController          = segue.destination as? RepositoryDetailViewController
+        repositoryDetailViewController?.repository  = repositories[selectedIndex]
     }
 }
