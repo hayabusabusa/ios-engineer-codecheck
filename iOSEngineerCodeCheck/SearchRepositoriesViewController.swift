@@ -62,16 +62,17 @@ extension SearchRepositoriesViewController: UISearchBarDelegate {
             return
         }
         
-        urlSessionTask = URLSession.shared.dataTask(with: url) { (data, res, err) in
+        urlSessionTask = URLSession.shared.dataTask(with: url) { [weak self] (data, res, err) in
             do {
-                guard let jsonObject    = try JSONSerialization.jsonObject(with: data!) as? [String: Any],
+                guard let data          = data,
+                      let jsonObject    = try JSONSerialization.jsonObject(with: data) as? [String: Any],
                       let items         = jsonObject["items"] as? [[String: Any]] else {
                         return
                 }
                 
-                self.repositories = items
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                self?.repositories = items
+                DispatchQueue.main.async { [weak self] in
+                    self?.tableView.reloadData()
                 }
             } catch {
                 print(error)
@@ -91,7 +92,7 @@ extension SearchRepositoriesViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell                    = UITableViewCell()
+        let cell                    = tableView.dequeueReusableCell(withIdentifier: "Repository", for: indexPath)
         let repository              = repositories[indexPath.row]
         cell.tag                    = indexPath.row
         cell.textLabel?.text        = repository["full_name"] as? String ?? ""
