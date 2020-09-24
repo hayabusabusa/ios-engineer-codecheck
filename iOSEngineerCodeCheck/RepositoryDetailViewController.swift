@@ -58,14 +58,14 @@ extension RepositoryDetailViewController {
                 return
         }
         
-        URLSession.shared.dataTask(with: imageURL) { (data, res, err) in
+        URLSession.shared.dataTask(with: imageURL) { [weak self] (data, res, err) in
             guard let data  = data,
                   let image = UIImage(data: data) else {
                 return
             }
             
             DispatchQueue.main.async {
-                self.avatarImageView.image = image
+                self?.avatarImageView.image = image
             }
         }.resume()
     }
