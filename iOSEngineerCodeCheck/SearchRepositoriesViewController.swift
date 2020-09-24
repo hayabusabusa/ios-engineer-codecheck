@@ -64,7 +64,8 @@ extension SearchRepositoriesViewController: UISearchBarDelegate {
         
         urlSessionTask = URLSession.shared.dataTask(with: url) { [weak self] (data, res, err) in
             do {
-                guard let jsonObject    = try JSONSerialization.jsonObject(with: data!) as? [String: Any],
+                guard let data          = data,
+                      let jsonObject    = try JSONSerialization.jsonObject(with: data) as? [String: Any],
                       let items         = jsonObject["items"] as? [[String: Any]] else {
                         return
                 }
