@@ -64,7 +64,7 @@ extension RepositoryDetailViewController {
                 return
             }
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 self?.avatarImageView.image = image
             }
         }.resume()

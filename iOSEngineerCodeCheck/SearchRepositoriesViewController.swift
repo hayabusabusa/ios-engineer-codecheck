@@ -71,7 +71,7 @@ extension SearchRepositoriesViewController: UISearchBarDelegate {
                 }
                 
                 self?.repositories = items
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
                     self?.tableView.reloadData()
                 }
             } catch {
