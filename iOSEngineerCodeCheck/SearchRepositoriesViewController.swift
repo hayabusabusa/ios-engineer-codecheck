@@ -92,7 +92,7 @@ extension SearchRepositoriesViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell                    = UITableViewCell(style: .subtitle, reuseIdentifier: "SearchRepositoriesViewControllerCell")
+        let cell                    = tableView.dequeueReusableCell(withIdentifier: "Repository", for: indexPath)
         let repository              = repositories[indexPath.row]
         cell.tag                    = indexPath.row
         cell.textLabel?.text        = repository["full_name"] as? String ?? ""
