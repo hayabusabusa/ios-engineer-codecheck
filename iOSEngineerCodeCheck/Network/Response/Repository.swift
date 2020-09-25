@@ -10,7 +10,7 @@ import Foundation
 
 struct Repository: Decodable {
     let fullName: String
-    let owner:RepositoryOwner
+    let owner: RepositoryOwner
     let stargazersCount: Int
     let watchersCount: Int
     let language: String
