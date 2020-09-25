@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,10 @@
 		712D67C4251D97F9000DC884 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712D67BB251D97F9000DC884 /* RxCocoa.framework */; };
 		712D67F6251D9CEE000DC884 /* GitHubRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D67F5251D9CEE000DC884 /* GitHubRepository.swift */; };
 		712D67FE251D9D26000DC884 /* GitHubRepositoryOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D67FD251D9D26000DC884 /* GitHubRepositoryOwner.swift */; };
+		712D6806251D9F88000DC884 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712D6804251D9F88000DC884 /* RxBlocking.framework */; platformFilter = ios; };
+		712D6807251D9F88000DC884 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712D6805251D9F88000DC884 /* RxTest.framework */; platformFilter = ios; };
+		712D680C251D9FEE000DC884 /* RxBlocking.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 712D6804251D9F88000DC884 /* RxBlocking.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		712D680D251D9FF4000DC884 /* RxTest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 712D6805251D9F88000DC884 /* RxTest.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF0A658D244F2A3B00280FA6 /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */; };
 		BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945DE244DC5E80012785A /* AppDelegate.swift */; };
 		BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945E0244DC5E80012785A /* SceneDelegate.swift */; };
@@ -42,6 +46,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		712D680B251D9FDC000DC884 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				712D680D251D9FF4000DC884 /* RxTest.framework in CopyFiles */,
+				712D680C251D9FEE000DC884 /* RxBlocking.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		712D67B7251D97F8000DC884 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		712D67B8251D97F9000DC884 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -50,6 +68,8 @@
 		712D67BB251D97F9000DC884 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		712D67F5251D9CEE000DC884 /* GitHubRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepository.swift; sourceTree = "<group>"; };
 		712D67FD251D9D26000DC884 /* GitHubRepositoryOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepositoryOwner.swift; sourceTree = "<group>"; };
+		712D6804251D9F88000DC884 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		712D6805251D9F88000DC884 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 		BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSEngineerCodeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD945DE244DC5E80012785A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +104,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				712D6806251D9F88000DC884 /* RxBlocking.framework in Frameworks */,
+				712D6807251D9F88000DC884 /* RxTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +122,8 @@
 		712D67B6251D97F8000DC884 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				712D6804251D9F88000DC884 /* RxBlocking.framework */,
+				712D6805251D9F88000DC884 /* RxTest.framework */,
 				712D67B9251D97F9000DC884 /* Alamofire.framework */,
 				712D67B7251D97F8000DC884 /* Kingfisher.framework */,
 				712D67BB251D97F9000DC884 /* RxCocoa.framework */,
@@ -209,6 +233,7 @@
 				BFD945ED244DC5EB0012785A /* Sources */,
 				BFD945EE244DC5EB0012785A /* Frameworks */,
 				BFD945EF244DC5EB0012785A /* Resources */,
+				712D680B251D9FDC000DC884 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -564,6 +589,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7G9J68NLX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = iOSEngineerCodeCheckTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -586,6 +615,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7G9J68NLX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = iOSEngineerCodeCheckTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
