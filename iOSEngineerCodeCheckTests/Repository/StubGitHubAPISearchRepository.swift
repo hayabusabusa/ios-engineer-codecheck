@@ -26,15 +26,6 @@ struct StubGitHubAPISearchRepository: GitHubAPISearchRepositoryProtocol {
     func searchRepositories(keyword: String) -> Single<SearchRepositoriesResponse> {
         return isErrorOccurred
             ? Single.error(StubError())
-            : Single.just(SearchRepositoriesResponse(totalCount: 1,
-                                                     items: [
-                                                        Repository(fullName: "Stub",
-                                                                   owner: RepositoryOwner(avatarURL: "Stub"),
-                                                                   stargazersCount: 1,
-                                                                   watchersCount: 1,
-                                                                   language: "Stub",
-                                                                   forksCount: 1,
-                                                                   openIssueCount: 1)
-                                                      ]))
+            : Single.just(Stubs.searchRepositoriesResponse)
     }
 }
