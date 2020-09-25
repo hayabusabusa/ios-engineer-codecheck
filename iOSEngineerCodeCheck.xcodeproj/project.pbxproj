@@ -24,6 +24,7 @@
 		712D682A251DA3CB000DC884 /* ResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D6829251DA3CB000DC884 /* ResponseTests.swift */; };
 		712D683A251DAABD000DC884 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D6839251DAABC000DC884 /* APIRequest.swift */; };
 		712D6842251DC63E000DC884 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D6841251DC63E000DC884 /* APIClient.swift */; };
+		712D6846251DD1CE000DC884 /* SearchRepositoriesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D6845251DD1CE000DC884 /* SearchRepositoriesRequest.swift */; };
 		BF0A658D244F2A3B00280FA6 /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */; };
 		BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945DE244DC5E80012785A /* AppDelegate.swift */; };
 		BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945E0244DC5E80012785A /* SceneDelegate.swift */; };
@@ -81,6 +82,7 @@
 		712D6829251DA3CB000DC884 /* ResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseTests.swift; sourceTree = "<group>"; };
 		712D6839251DAABC000DC884 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		712D6841251DC63E000DC884 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		712D6845251DD1CE000DC884 /* SearchRepositoriesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesRequest.swift; sourceTree = "<group>"; };
 		BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSEngineerCodeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD945DE244DC5E80012785A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				712D6839251DAABC000DC884 /* APIRequest.swift */,
+				712D6845251DD1CE000DC884 /* SearchRepositoriesRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				712D67FE251D9D26000DC884 /* RepositoryOwner.swift in Sources */,
 				BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */,
 				712D6842251DC63E000DC884 /* APIClient.swift in Sources */,
+				712D6846251DD1CE000DC884 /* SearchRepositoriesRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
