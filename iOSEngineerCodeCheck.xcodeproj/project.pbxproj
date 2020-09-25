@@ -12,8 +12,8 @@
 		712D67C0251D97F9000DC884 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712D67B9251D97F9000DC884 /* Alamofire.framework */; };
 		712D67C2251D97F9000DC884 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712D67BA251D97F9000DC884 /* RxRelay.framework */; };
 		712D67C4251D97F9000DC884 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712D67BB251D97F9000DC884 /* RxCocoa.framework */; };
-		712D67F6251D9CEE000DC884 /* GitHubRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D67F5251D9CEE000DC884 /* GitHubRepository.swift */; };
-		712D67FE251D9D26000DC884 /* GitHubRepositoryOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D67FD251D9D26000DC884 /* GitHubRepositoryOwner.swift */; };
+		712D67F6251D9CEE000DC884 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D67F5251D9CEE000DC884 /* Repository.swift */; };
+		712D67FE251D9D26000DC884 /* RepositoryOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D67FD251D9D26000DC884 /* RepositoryOwner.swift */; };
 		712D6806251D9F88000DC884 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712D6804251D9F88000DC884 /* RxBlocking.framework */; platformFilter = ios; };
 		712D6807251D9F88000DC884 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712D6805251D9F88000DC884 /* RxTest.framework */; platformFilter = ios; };
 		712D680C251D9FEE000DC884 /* RxBlocking.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 712D6804251D9F88000DC884 /* RxBlocking.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -68,8 +68,8 @@
 		712D67B9251D97F9000DC884 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		712D67BA251D97F9000DC884 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		712D67BB251D97F9000DC884 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
-		712D67F5251D9CEE000DC884 /* GitHubRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepository.swift; sourceTree = "<group>"; };
-		712D67FD251D9D26000DC884 /* GitHubRepositoryOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepositoryOwner.swift; sourceTree = "<group>"; };
+		712D67F5251D9CEE000DC884 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		712D67FD251D9D26000DC884 /* RepositoryOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryOwner.swift; sourceTree = "<group>"; };
 		712D6804251D9F88000DC884 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
 		712D6805251D9F88000DC884 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 		712D6812251DA075000DC884 /* XCTestCase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extension.swift"; sourceTree = "<group>"; };
@@ -148,8 +148,8 @@
 		712D67F4251D9CDD000DC884 /* Response */ = {
 			isa = PBXGroup;
 			children = (
-				712D67F5251D9CEE000DC884 /* GitHubRepository.swift */,
-				712D67FD251D9D26000DC884 /* GitHubRepositoryOwner.swift */,
+				712D67F5251D9CEE000DC884 /* Repository.swift */,
+				712D67FD251D9D26000DC884 /* RepositoryOwner.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -398,8 +398,8 @@
 				BFD945E3244DC5E80012785A /* SearchRepositoriesViewController.swift in Sources */,
 				BF0A658D244F2A3B00280FA6 /* RepositoryDetailViewController.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
-				712D67F6251D9CEE000DC884 /* GitHubRepository.swift in Sources */,
-				712D67FE251D9D26000DC884 /* GitHubRepositoryOwner.swift in Sources */,
+				712D67F6251D9CEE000DC884 /* Repository.swift in Sources */,
+				712D67FE251D9D26000DC884 /* RepositoryOwner.swift in Sources */,
 				BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
