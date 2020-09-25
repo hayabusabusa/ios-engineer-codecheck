@@ -29,6 +29,7 @@
 		712D6889251E035B000DC884 /* GitHubAPISearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D6888251E035B000DC884 /* GitHubAPISearchRepository.swift */; };
 		71402009251E07F2007CE443 /* StubGitHubAPISearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71402008251E07F2007CE443 /* StubGitHubAPISearchRepository.swift */; };
 		71402012251E08CF007CE443 /* SearchRepositoriesModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71402011251E08CF007CE443 /* SearchRepositoriesModelTests.swift */; };
+		71402019251E31AF007CE443 /* StubError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71402018251E31AF007CE443 /* StubError.swift */; };
 		BF0A658D244F2A3B00280FA6 /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */; };
 		BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945DE244DC5E80012785A /* AppDelegate.swift */; };
 		BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945E0244DC5E80012785A /* SceneDelegate.swift */; };
@@ -91,6 +92,7 @@
 		712D6888251E035B000DC884 /* GitHubAPISearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPISearchRepository.swift; sourceTree = "<group>"; };
 		71402008251E07F2007CE443 /* StubGitHubAPISearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubGitHubAPISearchRepository.swift; sourceTree = "<group>"; };
 		71402011251E08CF007CE443 /* SearchRepositoriesModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesModelTests.swift; sourceTree = "<group>"; };
+		71402018251E31AF007CE443 /* StubError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubError.swift; sourceTree = "<group>"; };
 		BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSEngineerCodeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD945DE244DC5E80012785A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		712D6810251DA02A000DC884 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				71402017251E31A2007CE443 /* Util */,
 				712D6811251DA032000DC884 /* Extension */,
 				712D6818251DA27E000DC884 /* Json */,
 			);
@@ -253,6 +256,14 @@
 				71402011251E08CF007CE443 /* SearchRepositoriesModelTests.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		71402017251E31A2007CE443 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				71402018251E31AF007CE443 /* StubError.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		BFD945D2244DC5E80012785A = {
@@ -497,6 +508,7 @@
 				712D682A251DA3CB000DC884 /* ResponseTests.swift in Sources */,
 				712D6813251DA075000DC884 /* XCTestCase+Extension.swift in Sources */,
 				71402009251E07F2007CE443 /* StubGitHubAPISearchRepository.swift in Sources */,
+				71402019251E31AF007CE443 /* StubError.swift in Sources */,
 				71402012251E08CF007CE443 /* SearchRepositoriesModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

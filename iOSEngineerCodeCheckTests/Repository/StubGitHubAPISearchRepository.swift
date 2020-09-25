@@ -11,9 +11,23 @@ import RxSwift
 
 struct StubGitHubAPISearchRepository: GitHubAPISearchRepositoryProtocol {
     
+    // MARK: Properties
+    
+    private let isErrorOccurred: Bool
+    
+    // MARK: Initializer
+    
+    init(isErrorOccurred: Bool = false) {
+        self.isErrorOccurred = isErrorOccurred
+    }
+    
+    // MARK: Call API
+    
     func searchRepositories(keyword: String) -> Single<SearchRepositoriesResponse> {
-        return Single.just(SearchRepositoriesResponse(totalCount: 1,
-                                                      items: [
+        return isErrorOccurred
+            ? Single.error(StubError())
+            : Single.just(SearchRepositoriesResponse(totalCount: 1,
+                                                     items: [
                                                         Repository(fullName: "Stub",
                                                                    owner: RepositoryOwner(avatarURL: "Stub"),
                                                                    stargazersCount: 1,

@@ -39,4 +39,30 @@ class SearchRepositoriesModelTests: XCTestCase {
         ])
         XCTAssertEqual(testableObserver.events, expression)
     }
+    
+    func test_APIへのデータ取得時にエラーが発生した場合にエラーを流すことを確認() {
+        let model               = SearchRepositoriesModel(gitHubAPISearchRepository: StubGitHubAPISearchRepository(isErrorOccurred: true))
+        let disposeBag          = DisposeBag()
+        let scheduler           = TestScheduler(initialClock: 0)
+        let testableObserver    = scheduler.createObserver(StubError.self)
+        
+        scheduler.scheduleAt(100) {
+            model.errorRelay
+                // NOTE: `Error` 型のままでは比較できないので流れてくる `StubError` にキャスト
+                .map { $0 as! StubError }
+                .subscribe(testableObserver)
+                .disposed(by: disposeBag)
+        }
+        
+        scheduler.scheduleAt(200) {
+            model.fetchRepositories(with: "TEST")
+        }
+        
+        scheduler.start()
+        
+        let expression: [Recorded<Event<StubError>>] = Recorded.events([
+            .next(200, StubError())
+        ])
+        XCTAssertEqual(testableObserver.events, expression)
+    }
 }
