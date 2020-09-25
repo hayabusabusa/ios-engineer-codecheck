@@ -20,6 +20,7 @@
 		712D680D251D9FF4000DC884 /* RxTest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 712D6805251D9F88000DC884 /* RxTest.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		712D6813251DA075000DC884 /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D6812251DA075000DC884 /* XCTestCase+Extension.swift */; };
 		712D681A251DA297000DC884 /* SearchRepositoriesResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 712D6819251DA297000DC884 /* SearchRepositoriesResponse.json */; };
+		712D6824251DA334000DC884 /* SearchRepositoriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D6823251DA334000DC884 /* SearchRepositoriesResponse.swift */; };
 		BF0A658D244F2A3B00280FA6 /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */; };
 		BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945DE244DC5E80012785A /* AppDelegate.swift */; };
 		BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945E0244DC5E80012785A /* SceneDelegate.swift */; };
@@ -74,6 +75,7 @@
 		712D6805251D9F88000DC884 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 		712D6812251DA075000DC884 /* XCTestCase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extension.swift"; sourceTree = "<group>"; };
 		712D6819251DA297000DC884 /* SearchRepositoriesResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchRepositoriesResponse.json; sourceTree = "<group>"; };
+		712D6823251DA334000DC884 /* SearchRepositoriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesResponse.swift; sourceTree = "<group>"; };
 		BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSEngineerCodeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD945DE244DC5E80012785A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			children = (
 				712D67F5251D9CEE000DC884 /* Repository.swift */,
 				712D67FD251D9D26000DC884 /* RepositoryOwner.swift */,
+				712D6823251DA334000DC884 /* SearchRepositoriesResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFD945E3244DC5E80012785A /* SearchRepositoriesViewController.swift in Sources */,
+				712D6824251DA334000DC884 /* SearchRepositoriesResponse.swift in Sources */,
 				BF0A658D244F2A3B00280FA6 /* RepositoryDetailViewController.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
 				712D67F6251D9CEE000DC884 /* Repository.swift in Sources */,
