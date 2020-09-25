@@ -300,6 +300,31 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		71402040251E4ED5007CE443 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				71402042251E4EF2007CE443 /* RepositoryDetail */,
+				71402041251E4EDF007CE443 /* SearchRepositories */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		71402041251E4EDF007CE443 /* SearchRepositories */ = {
+			isa = PBXGroup;
+			children = (
+				BFD945E2244DC5E80012785A /* SearchRepositoriesViewController.swift */,
+			);
+			path = SearchRepositories;
+			sourceTree = "<group>";
+		};
+		71402042251E4EF2007CE443 /* RepositoryDetail */ = {
+			isa = PBXGroup;
+			children = (
+				BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */,
+			);
+			path = RepositoryDetail;
+			sourceTree = "<group>";
+		};
 		BFD945D2244DC5E80012785A = {
 			isa = PBXGroup;
 			children = (
@@ -330,8 +355,7 @@
 				712D6887251E033B000DC884 /* Repository */,
 				712D6852251DD4BC000DC884 /* Model */,
 				71402020251E434F007CE443 /* ViewModel */,
-				BFD945E2244DC5E80012785A /* SearchRepositoriesViewController.swift */,
-				BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */,
+				71402040251E4ED5007CE443 /* View */,
 				BFD945E4244DC5E80012785A /* Main.storyboard */,
 				BFD945E7244DC5EB0012785A /* Assets.xcassets */,
 				BFD945E9244DC5EB0012785A /* LaunchScreen.storyboard */,
