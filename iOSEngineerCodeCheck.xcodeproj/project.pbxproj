@@ -13,6 +13,7 @@
 		712D67C2251D97F9000DC884 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712D67BA251D97F9000DC884 /* RxRelay.framework */; };
 		712D67C4251D97F9000DC884 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712D67BB251D97F9000DC884 /* RxCocoa.framework */; };
 		712D67F6251D9CEE000DC884 /* GitHubRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D67F5251D9CEE000DC884 /* GitHubRepository.swift */; };
+		712D67FE251D9D26000DC884 /* GitHubRepositoryOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D67FD251D9D26000DC884 /* GitHubRepositoryOwner.swift */; };
 		BF0A658D244F2A3B00280FA6 /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */; };
 		BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945DE244DC5E80012785A /* AppDelegate.swift */; };
 		BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945E0244DC5E80012785A /* SceneDelegate.swift */; };
@@ -48,6 +49,7 @@
 		712D67BA251D97F9000DC884 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		712D67BB251D97F9000DC884 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		712D67F5251D9CEE000DC884 /* GitHubRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepository.swift; sourceTree = "<group>"; };
+		712D67FD251D9D26000DC884 /* GitHubRepositoryOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepositoryOwner.swift; sourceTree = "<group>"; };
 		BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSEngineerCodeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD945DE244DC5E80012785A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				712D67F5251D9CEE000DC884 /* GitHubRepository.swift */,
+				712D67FD251D9D26000DC884 /* GitHubRepositoryOwner.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				BF0A658D244F2A3B00280FA6 /* RepositoryDetailViewController.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
 				712D67F6251D9CEE000DC884 /* GitHubRepository.swift in Sources */,
+				712D67FE251D9D26000DC884 /* GitHubRepositoryOwner.swift in Sources */,
 				BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

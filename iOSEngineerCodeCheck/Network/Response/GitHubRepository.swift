@@ -10,6 +10,7 @@ import Foundation
 
 struct GitHubRepository: Decodable {
     let fullName: String
+    let owner: GitHubRepositoryOwner
     let stargazersCount: Int
     let watchersCount: Int
     let language: String
@@ -18,6 +19,7 @@ struct GitHubRepository: Decodable {
     
     private enum CodingKeys: String, CodingKey {
         case fullName           = "full_name"
+        case owner
         case stargazersCount    = "stargazers_count"
         case watchersCount      = "watchers_count"
         case language
