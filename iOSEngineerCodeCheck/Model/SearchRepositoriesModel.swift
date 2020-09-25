@@ -22,7 +22,7 @@ final class SearchRepositoriesModel: SearchRepositoriesModelProtocol {
     
     // MARK: Dependency
     
-    private let apiClient: APIClientProtocol
+    private let gitHubAPISearchRepository: GitHubAPISearchRepositoryProtocol
     
     // MARK: Properties
     
@@ -32,14 +32,14 @@ final class SearchRepositoriesModel: SearchRepositoriesModelProtocol {
     
     // MARK: Initializer
     
-    init(apiClient: APIClientProtocol = APIClient.shared) {
-        self.apiClient = apiClient
+    init(gitHubAPISearchRepository: GitHubAPISearchRepositoryProtocol = GitHubAPISearchRepository()) {
+        self.gitHubAPISearchRepository = gitHubAPISearchRepository
     }
     
     // MARK: Call API
     
     func fetchRepositories(with keyword: String) {
-        apiClient.call(with: SearchRepositoriesRequest(keyword: keyword))
+        gitHubAPISearchRepository.searchRepositories(keyword: keyword)
             .subscribe(onSuccess: { [weak self] response in
                 self?.repositoriesRelay.accept(response.items)
             }, onError: { error in
