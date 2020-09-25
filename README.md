@@ -23,6 +23,26 @@
 2. GitHub API（`search/repositories`）でリポジトリーを検索し、結果一覧を概要（リポジトリ名）で表示
 3. 特定の結果を選択したら、該当リポジトリの詳細（リポジトリ名、オーナーアイコン、プロジェクト言語、Star 数、Watcher 数、Fork 数、Issue 数）を表示
 
+## 事前準備
+
+### Carthage
+
+本アプリでは [Carthage](https://github.com/Carthage/Carthage) を使用してサードパーティー製ライブラリを管理しています。  
+インストールした上でプロジェクトがあるフォルダで以下のコマンドを実行し、ライブラリのインストールを行ってください。
+
+```Shell
+carthage bootstrap --platform iOS
+```
+
+**⚠️ Xcode12 の場合**
+
+2020/9/25 現在、Xcode12 で Carthage のビルドを行うと失敗する場合があります。  
+よってワークアラウンドとしてプロジェクトがあるフォルダで以下のコマンドを実行してビルドを行ってください。
+
+```Shell
+sh ./carthage-build.sh bootstrap --platform iOS
+```
+
 ## 課題取り組み方法
 
 Issues を確認した上、本プロジェクトを [**Duplicate** してください](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/duplicating-a-repository)（Fork しないようにしてください。必要ならプライベートリポジトリーにしても大丈夫です）。今後のコミットは全てご自身のリポジトリーで行ってください。
