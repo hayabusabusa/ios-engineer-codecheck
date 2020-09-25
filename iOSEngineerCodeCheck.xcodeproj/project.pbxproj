@@ -33,6 +33,7 @@
 		71402024251E4381007CE443 /* SearchRepositoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71402023251E4381007CE443 /* SearchRepositoriesViewModel.swift */; };
 		71402028251E478E007CE443 /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71402027251E478E007CE443 /* Stubs.swift */; };
 		71402030251E499B007CE443 /* StubSearchRepositoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7140202F251E499B007CE443 /* StubSearchRepositoriesModel.swift */; };
+		71402039251E4B24007CE443 /* SearchRepositoriesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71402038251E4B24007CE443 /* SearchRepositoriesViewModelTests.swift */; };
 		BF0A658D244F2A3B00280FA6 /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */; };
 		BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945DE244DC5E80012785A /* AppDelegate.swift */; };
 		BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945E0244DC5E80012785A /* SceneDelegate.swift */; };
@@ -99,6 +100,7 @@
 		71402023251E4381007CE443 /* SearchRepositoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesViewModel.swift; sourceTree = "<group>"; };
 		71402027251E478E007CE443 /* Stubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stubs.swift; sourceTree = "<group>"; };
 		7140202F251E499B007CE443 /* StubSearchRepositoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubSearchRepositoriesModel.swift; sourceTree = "<group>"; };
+		71402038251E4B24007CE443 /* SearchRepositoriesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesViewModelTests.swift; sourceTree = "<group>"; };
 		BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSEngineerCodeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD945DE244DC5E80012785A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -290,6 +292,14 @@
 			path = SearchRepositories;
 			sourceTree = "<group>";
 		};
+		71402037251E4B07007CE443 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				71402038251E4B24007CE443 /* SearchRepositoriesViewModelTests.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		BFD945D2244DC5E80012785A = {
 			isa = PBXGroup;
 			children = (
@@ -336,6 +346,7 @@
 				712D6827251DA3AA000DC884 /* Network */,
 				71402007251E07DB007CE443 /* Repository */,
 				71402010251E08B6007CE443 /* Model */,
+				71402037251E4B07007CE443 /* ViewModel */,
 				712D6810251DA02A000DC884 /* Common */,
 				BFD945F7244DC5EB0012785A /* Info.plist */,
 			);
@@ -537,6 +548,7 @@
 				71402009251E07F2007CE443 /* StubGitHubAPISearchRepository.swift in Sources */,
 				71402028251E478E007CE443 /* Stubs.swift in Sources */,
 				71402019251E31AF007CE443 /* StubError.swift in Sources */,
+				71402039251E4B24007CE443 /* SearchRepositoriesViewModelTests.swift in Sources */,
 				71402012251E08CF007CE443 /* SearchRepositoriesModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
