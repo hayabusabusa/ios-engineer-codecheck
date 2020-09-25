@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,16 @@
 		712D67C0251D97F9000DC884 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712D67B9251D97F9000DC884 /* Alamofire.framework */; };
 		712D67C2251D97F9000DC884 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712D67BA251D97F9000DC884 /* RxRelay.framework */; };
 		712D67C4251D97F9000DC884 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712D67BB251D97F9000DC884 /* RxCocoa.framework */; };
+		712D67F6251D9CEE000DC884 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D67F5251D9CEE000DC884 /* Repository.swift */; };
+		712D67FE251D9D26000DC884 /* RepositoryOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D67FD251D9D26000DC884 /* RepositoryOwner.swift */; };
+		712D6806251D9F88000DC884 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712D6804251D9F88000DC884 /* RxBlocking.framework */; platformFilter = ios; };
+		712D6807251D9F88000DC884 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712D6805251D9F88000DC884 /* RxTest.framework */; platformFilter = ios; };
+		712D680C251D9FEE000DC884 /* RxBlocking.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 712D6804251D9F88000DC884 /* RxBlocking.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		712D680D251D9FF4000DC884 /* RxTest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 712D6805251D9F88000DC884 /* RxTest.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		712D6813251DA075000DC884 /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D6812251DA075000DC884 /* XCTestCase+Extension.swift */; };
+		712D681A251DA297000DC884 /* SearchRepositoriesResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 712D6819251DA297000DC884 /* SearchRepositoriesResponse.json */; };
+		712D6824251DA334000DC884 /* SearchRepositoriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D6823251DA334000DC884 /* SearchRepositoriesResponse.swift */; };
+		712D682A251DA3CB000DC884 /* ResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D6829251DA3CB000DC884 /* ResponseTests.swift */; };
 		BF0A658D244F2A3B00280FA6 /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */; };
 		BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945DE244DC5E80012785A /* AppDelegate.swift */; };
 		BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945E0244DC5E80012785A /* SceneDelegate.swift */; };
@@ -19,7 +29,6 @@
 		BFD945E6244DC5E80012785A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFD945E4244DC5E80012785A /* Main.storyboard */; };
 		BFD945E8244DC5EB0012785A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFD945E7244DC5EB0012785A /* Assets.xcassets */; };
 		BFD945EB244DC5EB0012785A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFD945E9244DC5EB0012785A /* LaunchScreen.storyboard */; };
-		BFD945F6244DC5EB0012785A /* iOSEngineerCodeCheckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945F5244DC5EB0012785A /* iOSEngineerCodeCheckTests.swift */; };
 		BFD94601244DC5EC0012785A /* iOSEngineerCodeCheckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD94600244DC5EC0012785A /* iOSEngineerCodeCheckUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,12 +49,34 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		712D680B251D9FDC000DC884 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				712D680D251D9FF4000DC884 /* RxTest.framework in CopyFiles */,
+				712D680C251D9FEE000DC884 /* RxBlocking.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		712D67B7251D97F8000DC884 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		712D67B8251D97F9000DC884 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		712D67B9251D97F9000DC884 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		712D67BA251D97F9000DC884 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		712D67BB251D97F9000DC884 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		712D67F5251D9CEE000DC884 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		712D67FD251D9D26000DC884 /* RepositoryOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryOwner.swift; sourceTree = "<group>"; };
+		712D6804251D9F88000DC884 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		712D6805251D9F88000DC884 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
+		712D6812251DA075000DC884 /* XCTestCase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extension.swift"; sourceTree = "<group>"; };
+		712D6819251DA297000DC884 /* SearchRepositoriesResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchRepositoriesResponse.json; sourceTree = "<group>"; };
+		712D6823251DA334000DC884 /* SearchRepositoriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesResponse.swift; sourceTree = "<group>"; };
+		712D6829251DA3CB000DC884 /* ResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseTests.swift; sourceTree = "<group>"; };
 		BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSEngineerCodeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD945DE244DC5E80012785A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,7 +87,6 @@
 		BFD945EA244DC5EB0012785A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BFD945EC244DC5EB0012785A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFD945F1244DC5EB0012785A /* iOSEngineerCodeCheckTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSEngineerCodeCheckTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BFD945F5244DC5EB0012785A /* iOSEngineerCodeCheckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSEngineerCodeCheckTests.swift; sourceTree = "<group>"; };
 		BFD945F7244DC5EB0012785A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFD945FC244DC5EB0012785A /* iOSEngineerCodeCheckUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSEngineerCodeCheckUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD94600244DC5EC0012785A /* iOSEngineerCodeCheckUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSEngineerCodeCheckUITests.swift; sourceTree = "<group>"; };
@@ -80,6 +110,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				712D6806251D9F88000DC884 /* RxBlocking.framework in Frameworks */,
+				712D6807251D9F88000DC884 /* RxTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +128,8 @@
 		712D67B6251D97F8000DC884 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				712D6804251D9F88000DC884 /* RxBlocking.framework */,
+				712D6805251D9F88000DC884 /* RxTest.framework */,
 				712D67B9251D97F9000DC884 /* Alamofire.framework */,
 				712D67B7251D97F8000DC884 /* Kingfisher.framework */,
 				712D67BB251D97F9000DC884 /* RxCocoa.framework */,
@@ -103,6 +137,65 @@
 				712D67B8251D97F9000DC884 /* RxSwift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		712D67F3251D9CD4000DC884 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				712D67F4251D9CDD000DC884 /* Response */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		712D67F4251D9CDD000DC884 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				712D67F5251D9CEE000DC884 /* Repository.swift */,
+				712D67FD251D9D26000DC884 /* RepositoryOwner.swift */,
+				712D6823251DA334000DC884 /* SearchRepositoriesResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		712D6810251DA02A000DC884 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				712D6811251DA032000DC884 /* Extension */,
+				712D6818251DA27E000DC884 /* Json */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		712D6811251DA032000DC884 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				712D6812251DA075000DC884 /* XCTestCase+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		712D6818251DA27E000DC884 /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				712D6819251DA297000DC884 /* SearchRepositoriesResponse.json */,
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
+		712D6827251DA3AA000DC884 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				712D6828251DA3B2000DC884 /* Response */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		712D6828251DA3B2000DC884 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				712D6829251DA3CB000DC884 /* ResponseTests.swift */,
+			);
+			path = Response;
 			sourceTree = "<group>";
 		};
 		BFD945D2244DC5E80012785A = {
@@ -131,6 +224,7 @@
 			children = (
 				BFD945DE244DC5E80012785A /* AppDelegate.swift */,
 				BFD945E0244DC5E80012785A /* SceneDelegate.swift */,
+				712D67F3251D9CD4000DC884 /* Network */,
 				BFD945E2244DC5E80012785A /* SearchRepositoriesViewController.swift */,
 				BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */,
 				BFD945E4244DC5E80012785A /* Main.storyboard */,
@@ -144,7 +238,8 @@
 		BFD945F4244DC5EB0012785A /* iOSEngineerCodeCheckTests */ = {
 			isa = PBXGroup;
 			children = (
-				BFD945F5244DC5EB0012785A /* iOSEngineerCodeCheckTests.swift */,
+				712D6827251DA3AA000DC884 /* Network */,
+				712D6810251DA02A000DC884 /* Common */,
 				BFD945F7244DC5EB0012785A /* Info.plist */,
 			);
 			path = iOSEngineerCodeCheckTests;
@@ -187,6 +282,7 @@
 				BFD945ED244DC5EB0012785A /* Sources */,
 				BFD945EE244DC5EB0012785A /* Frameworks */,
 				BFD945EF244DC5EB0012785A /* Resources */,
+				712D680B251D9FDC000DC884 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -274,6 +370,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				712D681A251DA297000DC884 /* SearchRepositoriesResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,8 +415,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFD945E3244DC5E80012785A /* SearchRepositoriesViewController.swift in Sources */,
+				712D6824251DA334000DC884 /* SearchRepositoriesResponse.swift in Sources */,
 				BF0A658D244F2A3B00280FA6 /* RepositoryDetailViewController.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
+				712D67F6251D9CEE000DC884 /* Repository.swift in Sources */,
+				712D67FE251D9D26000DC884 /* RepositoryOwner.swift in Sources */,
 				BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,7 +428,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFD945F6244DC5EB0012785A /* iOSEngineerCodeCheckTests.swift in Sources */,
+				712D682A251DA3CB000DC884 /* ResponseTests.swift in Sources */,
+				712D6813251DA075000DC884 /* XCTestCase+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +641,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7G9J68NLX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = iOSEngineerCodeCheckTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -562,6 +667,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7G9J68NLX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = iOSEngineerCodeCheckTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
