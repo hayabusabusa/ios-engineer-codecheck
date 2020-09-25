@@ -1,5 +1,5 @@
 //
-//  MockAPIClient.swift
+//  StubAPIClient.swift
 //  iOSEngineerCodeCheckTests
 //
 //  Created by 山田隼也 on 2020/09/25.
@@ -9,15 +9,11 @@
 import RxSwift
 @testable import iOSEngineerCodeCheck
 
-final class MockAPIClient: APIClientProtocol {
-    
-    // MARK: Singleton
-    
-    static let shared: MockAPIClient = .init()
+final class StubAPIClient: APIClientProtocol {
     
     // MARK: Initializer
     
-    private init() {}
+    init() {}
     
     // MARK: Call API
     
