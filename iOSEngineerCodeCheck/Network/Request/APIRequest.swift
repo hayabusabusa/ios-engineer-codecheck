@@ -17,6 +17,7 @@ protocol APIRequest {
     var encoding: Alamofire.ParameterEncoding { get }
     var parameters: Alamofire.Parameters? { get }
     var headers: Alamofire.HTTPHeaders? { get }
+    var sampleData: Response? { get }
 }
 
 extension APIRequest {
@@ -34,6 +35,10 @@ extension APIRequest {
     }
     
     var headers: Alamofire.HTTPHeaders? {
+        return nil
+    }
+    
+    var sampleData: Response? {
         return nil
     }
 }
