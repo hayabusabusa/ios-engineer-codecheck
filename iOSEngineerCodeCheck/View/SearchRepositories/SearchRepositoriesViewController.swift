@@ -7,24 +7,25 @@
 //
 
 import UIKit
+import RxCocoa
 
-class SearchRepositoriesViewController: UITableViewController {
+class SearchRepositoriesViewController: DisposableViewController {
     
     // MARK: IBOutlet
     
-    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var tableView: UITableView!
     
     // MARK: Properties
     
-    private let githubAPIURL = "https://api.github.com/search/repositories"
-    private var urlSessionTask: URLSessionTask?
-    private var repositories: [[String: Any]] = []
+    private var viewModel: SearchRepositoriesViewModel!
     
     // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureSearchBar()
+        configureNavigation()
+        configureTableView()
+        configureViewModel()
     }
 }
 
@@ -32,9 +33,30 @@ class SearchRepositoriesViewController: UITableViewController {
 
 extension SearchRepositoriesViewController {
     
-    private func configureSearchBar() {
-        searchBar.text      = "GitHubのリポジトリを検索できるよー"
-        searchBar.delegate  = self
+    private func configureNavigation() {
+        let searchBar                   = UISearchBar(frame: navigationController?.navigationBar.frame ?? .zero)
+        searchBar.delegate              = self
+        searchBar.placeholder           = "リポジトリを検索"
+        navigationItem.titleView        = searchBar
+        navigationItem.titleView?.frame = searchBar.frame
+    }
+    
+    private func configureTableView() {
+        tableView.delegate = self
+    }
+    
+    private func configureViewModel() {
+        let viewModel = SearchRepositoriesViewModel()
+        self.viewModel = viewModel
+        
+        viewModel.output.repositoriesDriver
+            .drive(tableView.rx.items) { tableView, row, element in
+                let cell                    = tableView.dequeueReusableCell(withIdentifier: "Repository", for: IndexPath(row: row, section: 0))
+                cell.textLabel?.text        = element.fullName
+                cell.detailTextLabel?.text  = element.language
+                return cell
+            }
+            .disposed(by: disposeBag)
     }
 }
 
@@ -43,84 +65,33 @@ extension SearchRepositoriesViewController {
 extension SearchRepositoriesViewController: UISearchBarDelegate {
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        // NOTE: SearchBar タップ時にテキストフィールドを空にする.
-        searchBar.text = ""
+        searchBar.setShowsCancelButton(true, animated: true)
         return true
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        urlSessionTask?.cancel()
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(false, animated: true)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchKeyword = searchBar.text,
-              searchKeyword.count != 0 else {
+        guard let keyword = searchBar.text,
+              keyword.count != 0 else {
             return
         }
         
-        guard let url = URL(string: githubAPIURL + "?q=" + searchKeyword) else {
-            return
-        }
+        viewModel.input.searchBarSearchButtonClicked(keyword: keyword)
         
-        urlSessionTask = URLSession.shared.dataTask(with: url) { [weak self] (data, res, err) in
-            do {
-                guard let data          = data,
-                      let jsonObject    = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-                      let items         = jsonObject["items"] as? [[String: Any]] else {
-                        return
-                }
-                
-                self?.repositories = items
-                DispatchQueue.main.async { [weak self] in
-                    self?.tableView.reloadData()
-                }
-            } catch {
-                print(error)
-            }
-        }
-        // NOTE: `resume()` でタスクを実行し、API へリクエストを送信する.
-        urlSessionTask?.resume()
-    }
-}
-
-// MARK: - TableView DataSource
-
-extension SearchRepositoriesViewController {
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repositories.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell                    = tableView.dequeueReusableCell(withIdentifier: "Repository", for: indexPath)
-        let repository              = repositories[indexPath.row]
-        cell.tag                    = indexPath.row
-        cell.textLabel?.text        = repository["full_name"] as? String ?? ""
-        cell.detailTextLabel?.text  = repository["language"] as? String ?? ""
-        return cell
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(false, animated: true)
     }
 }
 
 // MARK: - TableView Delegate
 
-extension SearchRepositoriesViewController {
+extension SearchRepositoriesViewController: UITableViewDelegate {
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "Detail", sender: self)
-    }
-}
-
-// MARK: - Prepare for segue
-
-extension SearchRepositoriesViewController {
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "Detail",
-              let selectedIndex = tableView.indexPathForSelectedRow?.row else {
-            return
-        }
-        
-        let repositoryDetailViewController          = segue.destination as? RepositoryDetailViewController
-        repositoryDetailViewController?.repository  = repositories[selectedIndex]
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

@@ -34,6 +34,8 @@
 		71402028251E478E007CE443 /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71402027251E478E007CE443 /* Stubs.swift */; };
 		71402030251E499B007CE443 /* StubSearchRepositoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7140202F251E499B007CE443 /* StubSearchRepositoriesModel.swift */; };
 		71402039251E4B24007CE443 /* SearchRepositoriesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71402038251E4B24007CE443 /* SearchRepositoriesViewModelTests.swift */; };
+		71402049251E5035007CE443 /* DisposableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71402048251E5035007CE443 /* DisposableViewController.swift */; };
+		7140204F251E5198007CE443 /* SearchRepositoriesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7140204E251E5198007CE443 /* SearchRepositoriesViewController.storyboard */; };
 		BF0A658D244F2A3B00280FA6 /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */; };
 		BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945DE244DC5E80012785A /* AppDelegate.swift */; };
 		BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945E0244DC5E80012785A /* SceneDelegate.swift */; };
@@ -101,6 +103,8 @@
 		71402027251E478E007CE443 /* Stubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stubs.swift; sourceTree = "<group>"; };
 		7140202F251E499B007CE443 /* StubSearchRepositoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubSearchRepositoriesModel.swift; sourceTree = "<group>"; };
 		71402038251E4B24007CE443 /* SearchRepositoriesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesViewModelTests.swift; sourceTree = "<group>"; };
+		71402048251E5035007CE443 /* DisposableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisposableViewController.swift; sourceTree = "<group>"; };
+		7140204E251E5198007CE443 /* SearchRepositoriesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchRepositoriesViewController.storyboard; sourceTree = "<group>"; };
 		BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSEngineerCodeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD945DE244DC5E80012785A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -313,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				BFD945E2244DC5E80012785A /* SearchRepositoriesViewController.swift */,
+				7140204E251E5198007CE443 /* SearchRepositoriesViewController.storyboard */,
 			);
 			path = SearchRepositories;
 			sourceTree = "<group>";
@@ -323,6 +328,22 @@
 				BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */,
 			);
 			path = RepositoryDetail;
+			sourceTree = "<group>";
+		};
+		71402046251E501D007CE443 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				71402047251E5025007CE443 /* View */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		71402047251E5025007CE443 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				71402048251E5035007CE443 /* DisposableViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		BFD945D2244DC5E80012785A = {
@@ -356,6 +377,7 @@
 				712D6852251DD4BC000DC884 /* Model */,
 				71402020251E434F007CE443 /* ViewModel */,
 				71402040251E4ED5007CE443 /* View */,
+				71402046251E501D007CE443 /* Common */,
 				BFD945E4244DC5E80012785A /* Main.storyboard */,
 				BFD945E7244DC5EB0012785A /* Assets.xcassets */,
 				BFD945E9244DC5EB0012785A /* LaunchScreen.storyboard */,
@@ -495,6 +517,7 @@
 				BFD945EB244DC5EB0012785A /* LaunchScreen.storyboard in Resources */,
 				BFD945E8244DC5EB0012785A /* Assets.xcassets in Resources */,
 				BFD945E6244DC5E80012785A /* Main.storyboard in Resources */,
+				7140204F251E5198007CE443 /* SearchRepositoriesViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,6 +575,7 @@
 				712D6824251DA334000DC884 /* SearchRepositoriesResponse.swift in Sources */,
 				BF0A658D244F2A3B00280FA6 /* RepositoryDetailViewController.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
+				71402049251E5035007CE443 /* DisposableViewController.swift in Sources */,
 				712D67F6251D9CEE000DC884 /* Repository.swift in Sources */,
 				71402024251E4381007CE443 /* SearchRepositoriesViewModel.swift in Sources */,
 				712D67FE251D9D26000DC884 /* RepositoryOwner.swift in Sources */,
