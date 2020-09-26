@@ -82,6 +82,15 @@
                             <constraint firstItem="CKM-Az-VuJ" firstAttribute="centerX" secondItem="e7P-pQ-GYq" secondAttribute="centerX" id="utq-mf-xVY"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="avatarImageView" destination="XSh-Se-R6p" id="2sj-8K-bqM"/>
+                        <outlet property="forksLabel" destination="Or4-DS-yXZ" id="w6r-sL-kUb"/>
+                        <outlet property="languageLabel" destination="0tN-CT-dK0" id="pHS-DY-coe"/>
+                        <outlet property="openIssuesLabel" destination="v8b-Yw-we7" id="swv-KJ-MNs"/>
+                        <outlet property="starsLabel" destination="e8s-lH-kjZ" id="34S-Vd-U4d"/>
+                        <outlet property="titleLabel" destination="e7P-pQ-GYq" id="smA-EU-dDi"/>
+                        <outlet property="watchersLabel" destination="UhG-oP-lSe" id="tTc-oA-O3a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SoW-54-Hca" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -61,6 +61,12 @@ extension SearchRepositoriesViewController {
                 return cell
             }
             .disposed(by: disposeBag)
+        viewModel.output.pushRepositoryDetailSignal
+            .emit(onNext: { [weak self] repository in
+                let vc = RepositoryDetailViewController.configure(with: repository)
+                self?.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -97,5 +103,6 @@ extension SearchRepositoriesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.input.didSelectRow(at: indexPath)
     }
 }
