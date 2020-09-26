@@ -21,6 +21,10 @@ class SearchRepositoriesViewController: DisposableViewController {
     
     // MARK: Lifecycle
     
+    static func instantiate() -> SearchRepositoriesViewController {
+        return Storyboard.SearchRepositoriesViewController.instantiate(SearchRepositoriesViewController.self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigation()
@@ -46,8 +50,8 @@ extension SearchRepositoriesViewController {
     }
     
     private func configureViewModel() {
-        let viewModel = SearchRepositoriesViewModel()
-        self.viewModel = viewModel
+        let viewModel   = SearchRepositoriesViewModel()
+        self.viewModel  = viewModel
         
         viewModel.output.repositoriesDriver
             .drive(tableView.rx.items) { tableView, row, element in

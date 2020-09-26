@@ -37,6 +37,7 @@
 		71402049251E5035007CE443 /* DisposableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71402048251E5035007CE443 /* DisposableViewController.swift */; };
 		7140204F251E5198007CE443 /* SearchRepositoriesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7140204E251E5198007CE443 /* SearchRepositoriesViewController.storyboard */; };
 		71402055251ED72C007CE443 /* RepositoryDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71402054251ED72C007CE443 /* RepositoryDetailViewController.storyboard */; };
+		7140205B251ED9E6007CE443 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7140205A251ED9E6007CE443 /* Storyboard.swift */; };
 		BF0A658D244F2A3B00280FA6 /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */; };
 		BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945DE244DC5E80012785A /* AppDelegate.swift */; };
 		BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945E0244DC5E80012785A /* SceneDelegate.swift */; };
@@ -106,6 +107,7 @@
 		71402048251E5035007CE443 /* DisposableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisposableViewController.swift; sourceTree = "<group>"; };
 		7140204E251E5198007CE443 /* SearchRepositoriesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchRepositoriesViewController.storyboard; sourceTree = "<group>"; };
 		71402054251ED72C007CE443 /* RepositoryDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = RepositoryDetailViewController.storyboard; path = iOSEngineerCodeCheck/View/RepositoryDetail/RepositoryDetailViewController.storyboard; sourceTree = SOURCE_ROOT; };
+		7140205A251ED9E6007CE443 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSEngineerCodeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD945DE244DC5E80012785A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 		71402040251E4ED5007CE443 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7140205A251ED9E6007CE443 /* Storyboard.swift */,
 				71402042251E4EF2007CE443 /* RepositoryDetail */,
 				71402041251E4EDF007CE443 /* SearchRepositories */,
 			);
@@ -570,6 +573,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFD945E3244DC5E80012785A /* SearchRepositoriesViewController.swift in Sources */,
+				7140205B251ED9E6007CE443 /* Storyboard.swift in Sources */,
 				712D683A251DAABD000DC884 /* APIRequest.swift in Sources */,
 				712D6854251DD4E2000DC884 /* SearchRepositoriesModel.swift in Sources */,
 				712D6824251DA334000DC884 /* SearchRepositoriesResponse.swift in Sources */,

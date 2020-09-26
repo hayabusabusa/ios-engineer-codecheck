@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class RepositoryDetailViewController: UIViewController {
     
@@ -22,14 +23,20 @@ class RepositoryDetailViewController: UIViewController {
     
     // MARK: Properties
     
-    var repository: [String: Any]!
+    private var repository: Repository!
     
     // MARK: Lifecycle
-        
+    
+    static func configure(with repository: Repository) -> RepositoryDetailViewController {
+        let vc = Storyboard.RepositoryDetailViewController.instantiate(RepositoryDetailViewController.self)
+        vc.repository = repository
+        return vc
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLabels()
-        fetchAvatarImage()
+        configureImageView()
     }
 }
 
@@ -38,35 +45,18 @@ class RepositoryDetailViewController: UIViewController {
 extension RepositoryDetailViewController {
     
     private func configureLabels() {
-        titleLabel.text         = repository["full_name"] as? String
-        languageLabel.text      = "Written in \(repository["language"] as? String ?? "")"
-        starsLabel.text         = "\(repository["stargazers_count"] as? Int ?? 0) stars"
-        watchersLabel.text      = "\(repository["watchers_count"] as? Int ?? 0) watchers"
-        forksLabel.text         = "\(repository["forks_count"] as? Int ?? 0) forks"
-        openIssuesLabel.text    = "\(repository["open_issues_count"] as? Int ?? 0) open issues"
+        titleLabel.text         = repository.fullName
+        languageLabel.text      = "Written in \(repository.language)"
+        starsLabel.text         = "\(repository.stargazersCount) stars"
+        watchersLabel.text      = "\(repository.watchersCount) watchers"
+        forksLabel.text         = "\(repository.forksCount) forks"
+        openIssuesLabel.text    = "\(repository.openIssueCount) open issues"
     }
-}
-
-// MARK: - Fetch avatar image
-
-extension RepositoryDetailViewController {
     
-    private func fetchAvatarImage() {
-        guard let owner          = repository["owner"] as? [String: Any],
-              let imageURLString = owner["avatar_url"] as? String,
-              let imageURL       = URL(string: imageURLString) else {
-                return
+    private func configureImageView() {
+        guard let avatarURL = URL(string: repository.owner.avatarURL) else {
+            return
         }
-        
-        URLSession.shared.dataTask(with: imageURL) { [weak self] (data, res, err) in
-            guard let data  = data,
-                  let image = UIImage(data: data) else {
-                return
-            }
-            
-            DispatchQueue.main.async { [weak self] in
-                self?.avatarImageView.image = image
-            }
-        }.resume()
+        avatarImageView.kf.setImage(with: avatarURL, options: [.transition(.fade(0.3))])
     }
 }
