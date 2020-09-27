@@ -21,7 +21,7 @@
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="Htc-Q7-nOI">
                         <rect key="frame" x="16" y="12" width="261" height="64"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5B5-nA-rBA" customClass="ImageView" customModule="iOSEngineerCodeCheck" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5B5-nA-rBA" customClass="ImageView" customModule="iOSEngineerCodeCheck" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="5B5-nA-rBA" secondAttribute="height" multiplier="1:1" id="xVP-oe-aOf"/>
