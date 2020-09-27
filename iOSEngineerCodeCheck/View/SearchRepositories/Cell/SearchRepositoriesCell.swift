@@ -39,15 +39,15 @@ class SearchRepositoriesCell: UITableViewCell {
     
     // MARK: Configuration
     
-    func configureCell(title: String, desc: String?, stars: String, language: String?, avatarImage: String?) {
-        titleLabel.text = title
-        descriptionLabel.text = desc
-        starsLabel.text = stars
-        languageLabel.text = language
+    func configureCell(title: String, desc: String?, stars: String, language: String?, avatarURL: String?) {
+        titleLabel.text         = title
+        descriptionLabel.text   = desc
+        starsLabel.text         = stars
+        languageLabel.text      = language
         
-        if let avatarImage = avatarImage,
-           let imageURL = URL(string: avatarImage) {
-            avatarImageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.3))])
+        if let avatarURL    = avatarURL,
+           let url          = URL(string: avatarURL) {
+            avatarImageView.kf.setImage(with: url, options: [.transition(.fade(0.3))])
         } else {
             avatarImageView.image = nil
         }
