@@ -9,17 +9,23 @@
 import Foundation
 
 struct Repository: Decodable {
+    let name: String
     let fullName: String
+    let desc: String?
     let owner: RepositoryOwner
+    let homepage: String?
     let stargazersCount: Int
     let watchersCount: Int
-    let language: String
+    let language: String?
     let forksCount: Int
     let openIssueCount: Int
     
     private enum CodingKeys: String, CodingKey {
+        case name
         case fullName           = "full_name"
+        case desc               = "description"
         case owner
+        case homepage
         case stargazersCount    = "stargazers_count"
         case watchersCount      = "watchers_count"
         case language
