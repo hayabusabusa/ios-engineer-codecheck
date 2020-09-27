@@ -28,6 +28,8 @@
 		712D6854251DD4E2000DC884 /* SearchRepositoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D6853251DD4E2000DC884 /* SearchRepositoriesModel.swift */; };
 		712D6889251E035B000DC884 /* GitHubAPISearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D6888251E035B000DC884 /* GitHubAPISearchRepository.swift */; };
 		712DAF442520A96F00889011 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DAF432520A96F00889011 /* ImageView.swift */; };
+		712DAF4A2520AAA200889011 /* SearchRepositoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DAF482520AAA200889011 /* SearchRepositoriesCell.swift */; };
+		712DAF4B2520AAA200889011 /* SearchRepositoriesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 712DAF492520AAA200889011 /* SearchRepositoriesCell.xib */; };
 		71402009251E07F2007CE443 /* StubGitHubAPISearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71402008251E07F2007CE443 /* StubGitHubAPISearchRepository.swift */; };
 		71402012251E08CF007CE443 /* SearchRepositoriesModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71402011251E08CF007CE443 /* SearchRepositoriesModelTests.swift */; };
 		71402019251E31AF007CE443 /* StubError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71402018251E31AF007CE443 /* StubError.swift */; };
@@ -99,6 +101,8 @@
 		712D6853251DD4E2000DC884 /* SearchRepositoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesModel.swift; sourceTree = "<group>"; };
 		712D6888251E035B000DC884 /* GitHubAPISearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPISearchRepository.swift; sourceTree = "<group>"; };
 		712DAF432520A96F00889011 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		712DAF482520AAA200889011 /* SearchRepositoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesCell.swift; sourceTree = "<group>"; };
+		712DAF492520AAA200889011 /* SearchRepositoriesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchRepositoriesCell.xib; sourceTree = "<group>"; };
 		71402008251E07F2007CE443 /* StubGitHubAPISearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubGitHubAPISearchRepository.swift; sourceTree = "<group>"; };
 		71402011251E08CF007CE443 /* SearchRepositoriesModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesModelTests.swift; sourceTree = "<group>"; };
 		71402018251E31AF007CE443 /* StubError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubError.swift; sourceTree = "<group>"; };
@@ -258,6 +262,15 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		712DAF472520AA7D00889011 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				712DAF482520AAA200889011 /* SearchRepositoriesCell.swift */,
+				712DAF492520AAA200889011 /* SearchRepositoriesCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		71402007251E07DB007CE443 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,6 +336,7 @@
 			children = (
 				BFD945E2244DC5E80012785A /* SearchRepositoriesViewController.swift */,
 				7140204E251E5198007CE443 /* SearchRepositoriesViewController.storyboard */,
+				712DAF472520AA7D00889011 /* Cell */,
 			);
 			path = SearchRepositories;
 			sourceTree = "<group>";
@@ -522,6 +536,7 @@
 			files = (
 				BFD945EB244DC5EB0012785A /* LaunchScreen.storyboard in Resources */,
 				BFD945E8244DC5EB0012785A /* Assets.xcassets in Resources */,
+				712DAF4B2520AAA200889011 /* SearchRepositoriesCell.xib in Resources */,
 				71402055251ED72C007CE443 /* RepositoryDetailViewController.storyboard in Resources */,
 				7140204F251E5198007CE443 /* SearchRepositoriesViewController.storyboard in Resources */,
 			);
@@ -584,6 +599,7 @@
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
 				71402049251E5035007CE443 /* DisposableViewController.swift in Sources */,
 				712DAF442520A96F00889011 /* ImageView.swift in Sources */,
+				712DAF4A2520AAA200889011 /* SearchRepositoriesCell.swift in Sources */,
 				712D67F6251D9CEE000DC884 /* Repository.swift in Sources */,
 				71402024251E4381007CE443 /* SearchRepositoriesViewModel.swift in Sources */,
 				712D67FE251D9D26000DC884 /* RepositoryOwner.swift in Sources */,
