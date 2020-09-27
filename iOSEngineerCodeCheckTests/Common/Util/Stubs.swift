@@ -10,8 +10,11 @@ import Foundation
 @testable import iOSEngineerCodeCheck
 
 enum Stubs {
-    static let repository = Repository(fullName: "Stub",
+    static let repository = Repository(name: "Stub",
+                                       fullName: "Stub",
+                                       desc: "Stub",
                                        owner: RepositoryOwner(avatarURL: "Stub"),
+                                       homepage: "Stub",
                                        stargazersCount: 1,
                                        watchersCount: 1,
                                        language: "Stub",
@@ -19,8 +22,11 @@ enum Stubs {
                                        openIssueCount: 1)
     static let searchRepositoriesResponse = SearchRepositoriesResponse(totalCount: 1,
                                                                        items: [
-                                                                        Repository(fullName: "Stub",
+                                                                        Repository(name: "Stub",
+                                                                                   fullName: "Stub",
+                                                                                   desc: "Stub",
                                                                                    owner: RepositoryOwner(avatarURL: "Stub"),
+                                                                                   homepage: "Stub",
                                                                                    stargazersCount: 1,
                                                                                    watchersCount: 1,
                                                                                    language: "Stub",

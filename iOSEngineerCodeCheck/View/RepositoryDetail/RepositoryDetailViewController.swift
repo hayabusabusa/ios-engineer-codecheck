@@ -46,7 +46,7 @@ extension RepositoryDetailViewController {
     
     private func configureLabels() {
         titleLabel.text         = repository.fullName
-        languageLabel.text      = "Written in \(repository.language)"
+        languageLabel.text      = "Written in \(repository.language ?? "")"
         starsLabel.text         = "\(repository.stargazersCount) stars"
         watchersLabel.text      = "\(repository.watchersCount) watchers"
         forksLabel.text         = "\(repository.forksCount) forks"
