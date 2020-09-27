@@ -57,7 +57,7 @@ extension SearchRepositoriesViewController {
         
         viewModel.output.repositoriesDriver
             .drive(tableView.rx.items) { tableView, row, element in
-                let cell                    = tableView.dequeueReusableCell(withIdentifier: SearchRepositoriesCell.reuseIdentifier, for: IndexPath(row: row, section: 0)) as! SearchRepositoriesCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: SearchRepositoriesCell.reuseIdentifier, for: IndexPath(row: row, section: 0)) as! SearchRepositoriesCell
                 cell.configureCell(title: element.fullName, desc: element.desc, stars: "\(element.stargazersCount)", language: element.language, avatarURL: element.owner.avatarURL)
                 return cell
             }
