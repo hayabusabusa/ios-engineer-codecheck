@@ -32,11 +32,8 @@ class RepositoryDetailViewController: DisposableViewController {
     // MARK: Properties
     
     private var viewModel: RepositoryDetailViewModel!
-    
     private lazy var initOnViewDidAppear: Void = {
-        UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseInOut]) {
-            self.collapsibleView.isHidden = false
-        }
+        showOpenSafariButtonWithAnimation()
     }()
     
     // MARK: Lifecycle
@@ -124,6 +121,17 @@ extension RepositoryDetailViewController {
             return
         }
         avatarImageView.kf.setImage(with: avatarURL, options: [.transition(.fade(0.3))])
+    }
+}
+
+// MARK: - Animation
+
+extension RepositoryDetailViewController {
+    
+    private func showOpenSafariButtonWithAnimation() {
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseInOut]) {
+            self.collapsibleView.isHidden = false
+        }
     }
 }
 
