@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class RepositoryDetailViewController: UIViewController {
+class RepositoryDetailViewController: DisposableViewController {
     
     // MARK: IBOutlet
     
@@ -26,21 +26,20 @@ class RepositoryDetailViewController: UIViewController {
     
     // MARK: Properties
     
-    private var repository: Repository!
+    private var viewModel: RepositoryDetailViewModel!
     
     // MARK: Lifecycle
     
     static func configure(with repository: Repository) -> RepositoryDetailViewController {
-        let vc = Storyboard.RepositoryDetailViewController.instantiate(RepositoryDetailViewController.self)
-        vc.repository = repository
+        let vc          = Storyboard.RepositoryDetailViewController.instantiate(RepositoryDetailViewController.self)
+        vc.viewModel    = RepositoryDetailViewModel(repository: repository)
         return vc
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureLabels()
         configureLinkButton()
-        configureImageView()
+        configureViewModel()
     }
 }
 
@@ -48,7 +47,27 @@ class RepositoryDetailViewController: UIViewController {
 
 extension RepositoryDetailViewController {
     
-    private func configureLabels() {
+    private func configureLinkButton() {
+        linkButton.contentHorizontalAlignment = .leading
+    }
+    
+    private func configureViewModel() {
+        viewModel.output.repositoryDriver
+            .drive(onNext: { [weak self] repository in
+                self?.bindLabels(with: repository)
+                self?.bindButton(with: repository)
+                self?.bindImageView(with: repository)
+            })
+            .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - Bind ViewModel
+
+extension RepositoryDetailViewController {
+    
+    private func bindLabels(with repository: Repository) {
+        navigationItem.title                = repository.fullName
         ownerNameLabel.text                 = repository.owner.login
         titleLabel.text                     = repository.name
         descriptionLabel.text               = repository.desc
@@ -60,13 +79,12 @@ extension RepositoryDetailViewController {
         openIssuesLabel.text                = "\(repository.openIssueCount) open issues"
     }
     
-    private func configureLinkButton() {
-        linkButton.superview?.isHidden          = repository.homepage == nil
-        linkButton.contentHorizontalAlignment   = .leading
+    private func bindButton(with repository: Repository) {
+        linkButton.superview?.isHidden = repository.homepage == nil
         linkButton.setTitle(repository.homepage, for: .normal)
     }
     
-    private func configureImageView() {
+    private func bindImageView(with repository: Repository) {
         guard let avatarURL = URL(string: repository.owner.avatarURL) else {
             return
         }
