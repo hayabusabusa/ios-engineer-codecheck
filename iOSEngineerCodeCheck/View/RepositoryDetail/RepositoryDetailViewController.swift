@@ -24,7 +24,6 @@ class RepositoryDetailViewController: UIViewController {
     @IBOutlet private weak var openIssuesLabel: UILabel!
     @IBOutlet private weak var watchersLabel: UILabel!
     
-    
     // MARK: Properties
     
     private var repository: Repository!
