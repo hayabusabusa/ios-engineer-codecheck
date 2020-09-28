@@ -15,9 +15,11 @@ enum Stubs {
                                        desc: "Stub",
                                        owner: RepositoryOwner(login: "Stub", avatarURL: "Stub"),
                                        homepage: "Stub",
+                                       htmlURL: "Stub",
                                        stargazersCount: 1,
                                        watchersCount: 1,
                                        language: "Stub",
+                                       license: RepositoryLicense(key: "Stub", name: "Stub", spdxID: "Stub"),
                                        forksCount: 1,
                                        openIssueCount: 1)
     static let searchRepositoriesResponse = SearchRepositoriesResponse(totalCount: 1,
@@ -27,9 +29,11 @@ enum Stubs {
                                                                                    desc: "Stub",
                                                                                    owner: RepositoryOwner(login: "Stub", avatarURL: "Stub"),
                                                                                    homepage: "Stub",
+                                                                                   htmlURL: "Stub",
                                                                                    stargazersCount: 1,
                                                                                    watchersCount: 1,
                                                                                    language: "Stub",
+                                                                                   license: RepositoryLicense(key: "Stub", name: "Stub", spdxID: "Stub"),
                                                                                    forksCount: 1,
                                                                                    openIssueCount: 1)
                                                                        ])

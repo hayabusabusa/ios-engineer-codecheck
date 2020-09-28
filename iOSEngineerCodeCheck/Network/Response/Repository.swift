@@ -14,9 +14,11 @@ struct Repository: Decodable {
     let desc: String?
     let owner: RepositoryOwner
     let homepage: String?
+    let htmlURL: String
     let stargazersCount: Int
     let watchersCount: Int
     let language: String?
+    let license: RepositoryLicense?
     let forksCount: Int
     let openIssueCount: Int
     
@@ -26,9 +28,11 @@ struct Repository: Decodable {
         case desc               = "description"
         case owner
         case homepage
+        case htmlURL            = "html_url"
         case stargazersCount    = "stargazers_count"
         case watchersCount      = "watchers_count"
         case language
+        case license
         case forksCount         = "forks_count"
         case openIssueCount     = "open_issues_count"
     }
