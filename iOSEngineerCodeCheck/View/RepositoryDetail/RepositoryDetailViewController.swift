@@ -14,12 +14,16 @@ class RepositoryDetailViewController: UIViewController {
     // MARK: IBOutlet
     
     @IBOutlet private weak var avatarImageView: UIImageView!
+    @IBOutlet private weak var ownerNameLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var languageLabel: UILabel!
+    @IBOutlet private weak var linkButton: UIButton!
     @IBOutlet private weak var starsLabel: UILabel!
-    @IBOutlet private weak var watchersLabel: UILabel!
     @IBOutlet private weak var forksLabel: UILabel!
     @IBOutlet private weak var openIssuesLabel: UILabel!
+    @IBOutlet private weak var watchersLabel: UILabel!
+    
     
     // MARK: Properties
     
@@ -36,6 +40,7 @@ class RepositoryDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLabels()
+        configureLinkButton()
         configureImageView()
     }
 }
@@ -45,12 +50,21 @@ class RepositoryDetailViewController: UIViewController {
 extension RepositoryDetailViewController {
     
     private func configureLabels() {
-        titleLabel.text         = repository.fullName
-        languageLabel.text      = "Written in \(repository.language ?? "")"
-        starsLabel.text         = "\(repository.stargazersCount) stars"
-        watchersLabel.text      = "\(repository.watchersCount) watchers"
-        forksLabel.text         = "\(repository.forksCount) forks"
-        openIssuesLabel.text    = "\(repository.openIssueCount) open issues"
+        ownerNameLabel.text                 = repository.owner.login
+        titleLabel.text                     = repository.name
+        descriptionLabel.text               = repository.desc
+        languageLabel.text                  = repository.language
+        languageLabel.superview?.isHidden   = repository.language == nil
+        starsLabel.text                     = "\(repository.stargazersCount) stars"
+        watchersLabel.text                  = "\(repository.watchersCount) watchers"
+        forksLabel.text                     = "\(repository.forksCount) forks"
+        openIssuesLabel.text                = "\(repository.openIssueCount) open issues"
+    }
+    
+    private func configureLinkButton() {
+        linkButton.superview?.isHidden          = repository.homepage == nil
+        linkButton.contentHorizontalAlignment   = .leading
+        linkButton.setTitle(repository.homepage, for: .normal)
     }
     
     private func configureImageView() {
