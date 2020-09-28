@@ -30,6 +30,7 @@
 		712DAF442520A96F00889011 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DAF432520A96F00889011 /* ImageView.swift */; };
 		712DAF4A2520AAA200889011 /* SearchRepositoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DAF482520AAA200889011 /* SearchRepositoriesCell.swift */; };
 		712DAF4B2520AAA200889011 /* SearchRepositoriesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 712DAF492520AAA200889011 /* SearchRepositoriesCell.xib */; };
+		712DAF57252161B900889011 /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712DAF56252161B900889011 /* Down.framework */; };
 		71402009251E07F2007CE443 /* StubGitHubAPISearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71402008251E07F2007CE443 /* StubGitHubAPISearchRepository.swift */; };
 		71402012251E08CF007CE443 /* SearchRepositoriesModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71402011251E08CF007CE443 /* SearchRepositoriesModelTests.swift */; };
 		71402019251E31AF007CE443 /* StubError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71402018251E31AF007CE443 /* StubError.swift */; };
@@ -103,6 +104,7 @@
 		712DAF432520A96F00889011 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		712DAF482520AAA200889011 /* SearchRepositoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesCell.swift; sourceTree = "<group>"; };
 		712DAF492520AAA200889011 /* SearchRepositoriesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchRepositoriesCell.xib; sourceTree = "<group>"; };
+		712DAF56252161B900889011 /* Down.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Down.framework; path = Carthage/Build/iOS/Down.framework; sourceTree = "<group>"; };
 		71402008251E07F2007CE443 /* StubGitHubAPISearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubGitHubAPISearchRepository.swift; sourceTree = "<group>"; };
 		71402011251E08CF007CE443 /* SearchRepositoriesModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesModelTests.swift; sourceTree = "<group>"; };
 		71402018251E31AF007CE443 /* StubError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubError.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				712D67BE251D97F9000DC884 /* RxSwift.framework in Frameworks */,
 				712D67C0251D97F9000DC884 /* Alamofire.framework in Frameworks */,
 				712D67C4251D97F9000DC884 /* RxCocoa.framework in Frameworks */,
+				712DAF57252161B900889011 /* Down.framework in Frameworks */,
 				712D67BC251D97F9000DC884 /* Kingfisher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,6 +167,7 @@
 		712D67B6251D97F8000DC884 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				712DAF56252161B900889011 /* Down.framework */,
 				712D6804251D9F88000DC884 /* RxBlocking.framework */,
 				712D6805251D9F88000DC884 /* RxTest.framework */,
 				712D67B9251D97F9000DC884 /* Alamofire.framework */,
@@ -573,6 +577,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Down.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
