@@ -35,4 +35,29 @@ class RepositoryDetailViewModelTests: XCTestCase {
         ])
         XCTAssertEqual(testableObserver.events, expression)
     }
+    
+    func test_リンク系のボタンタップ時にSafari表示用のSignalにURLが流れてくることを確認() {
+        let stubURL             = URL(string: "https://www.google.com")!
+        let viewModel           = RepositoryDetailViewModel(repository: Stubs.repository)
+        let disposeBag          = DisposeBag()
+        let scheduler           = TestScheduler(initialClock: 0)
+        let testableObserver    = scheduler.createObserver(URL.self)
+        
+        scheduler.scheduleAt(100) {
+            viewModel.output.presentSafariSignal
+                .emit(to: testableObserver)
+                .disposed(by: disposeBag)
+        }
+        
+        scheduler.scheduleAt(200) {
+            viewModel.input.tappedLinkButton(url: stubURL.absoluteString)
+        }
+        
+        scheduler.start()
+        
+        let expression = Recorded.events([
+            .next(200, stubURL)
+        ])
+        XCTAssertEqual(testableObserver.events, expression)
+    }
 }
