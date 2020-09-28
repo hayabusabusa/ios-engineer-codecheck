@@ -35,6 +35,8 @@
 		712DAF622521651E00889011 /* APICustomDecodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DAF612521651E00889011 /* APICustomDecodeRequest.swift */; };
 		712DAF68252181C600889011 /* GitHubAPIReadmeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DAF67252181C600889011 /* GitHubAPIReadmeRepository.swift */; };
 		712DAF6C2521858E00889011 /* RepositoryDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DAF6B2521858E00889011 /* RepositoryDetailModel.swift */; };
+		712DAF722521880B00889011 /* RepositoryDetailModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DAF712521880B00889011 /* RepositoryDetailModelTests.swift */; };
+		712DAF782521882100889011 /* StubGitHubAPIReadmeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DAF772521882100889011 /* StubGitHubAPIReadmeRepository.swift */; };
 		71402009251E07F2007CE443 /* StubGitHubAPISearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71402008251E07F2007CE443 /* StubGitHubAPISearchRepository.swift */; };
 		71402012251E08CF007CE443 /* SearchRepositoriesModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71402011251E08CF007CE443 /* SearchRepositoriesModelTests.swift */; };
 		71402019251E31AF007CE443 /* StubError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71402018251E31AF007CE443 /* StubError.swift */; };
@@ -113,6 +115,8 @@
 		712DAF612521651E00889011 /* APICustomDecodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICustomDecodeRequest.swift; sourceTree = "<group>"; };
 		712DAF67252181C600889011 /* GitHubAPIReadmeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIReadmeRepository.swift; sourceTree = "<group>"; };
 		712DAF6B2521858E00889011 /* RepositoryDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailModel.swift; sourceTree = "<group>"; };
+		712DAF712521880B00889011 /* RepositoryDetailModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailModelTests.swift; sourceTree = "<group>"; };
+		712DAF772521882100889011 /* StubGitHubAPIReadmeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubGitHubAPIReadmeRepository.swift; sourceTree = "<group>"; };
 		71402008251E07F2007CE443 /* StubGitHubAPISearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubGitHubAPISearchRepository.swift; sourceTree = "<group>"; };
 		71402011251E08CF007CE443 /* SearchRepositoriesModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesModelTests.swift; sourceTree = "<group>"; };
 		71402018251E31AF007CE443 /* StubError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubError.swift; sourceTree = "<group>"; };
@@ -287,10 +291,19 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		712DAF70252187EC00889011 /* RepositoryDetail */ = {
+			isa = PBXGroup;
+			children = (
+				712DAF712521880B00889011 /* RepositoryDetailModelTests.swift */,
+			);
+			path = RepositoryDetail;
+			sourceTree = "<group>";
+		};
 		71402007251E07DB007CE443 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
 				71402008251E07F2007CE443 /* StubGitHubAPISearchRepository.swift */,
+				712DAF772521882100889011 /* StubGitHubAPIReadmeRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -298,6 +311,7 @@
 		71402010251E08B6007CE443 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				712DAF70252187EC00889011 /* RepositoryDetail */,
 				7140202E251E497F007CE443 /* SearchRepositories */,
 			);
 			path = Model;
@@ -638,11 +652,13 @@
 				712D682A251DA3CB000DC884 /* ResponseTests.swift in Sources */,
 				712D6813251DA075000DC884 /* XCTestCase+Extension.swift in Sources */,
 				71402030251E499B007CE443 /* StubSearchRepositoriesModel.swift in Sources */,
+				712DAF722521880B00889011 /* RepositoryDetailModelTests.swift in Sources */,
 				71402009251E07F2007CE443 /* StubGitHubAPISearchRepository.swift in Sources */,
 				71402028251E478E007CE443 /* Stubs.swift in Sources */,
 				71402019251E31AF007CE443 /* StubError.swift in Sources */,
 				71402039251E4B24007CE443 /* SearchRepositoriesViewModelTests.swift in Sources */,
 				71402012251E08CF007CE443 /* SearchRepositoriesModelTests.swift in Sources */,
+				712DAF782521882100889011 /* StubGitHubAPIReadmeRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

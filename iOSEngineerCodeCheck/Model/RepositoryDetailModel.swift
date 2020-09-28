@@ -14,7 +14,6 @@ protocol RepositoryDetailModelProtocol: AnyObject {
     /// 取得できなかった場合は `nil` が流れてくる.
     var readmeRelay: PublishRelay<String?> { get }
     
-    
     /// GitHub リポジトリから `README.md` ファイルを取得する.
     /// - Parameter repository: 取得したいリポジトリの情報
     func fetchReadme(of repository: Repository)
