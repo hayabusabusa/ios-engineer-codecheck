@@ -31,6 +31,8 @@
 		712DAF4A2520AAA200889011 /* SearchRepositoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DAF482520AAA200889011 /* SearchRepositoriesCell.swift */; };
 		712DAF4B2520AAA200889011 /* SearchRepositoriesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 712DAF492520AAA200889011 /* SearchRepositoriesCell.xib */; };
 		712DAF57252161B900889011 /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712DAF56252161B900889011 /* Down.framework */; };
+		712DAF5E252162D800889011 /* GetReadmeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DAF5D252162D800889011 /* GetReadmeRequest.swift */; };
+		712DAF622521651E00889011 /* APICustomDecodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712DAF612521651E00889011 /* APICustomDecodeRequest.swift */; };
 		71402009251E07F2007CE443 /* StubGitHubAPISearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71402008251E07F2007CE443 /* StubGitHubAPISearchRepository.swift */; };
 		71402012251E08CF007CE443 /* SearchRepositoriesModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71402011251E08CF007CE443 /* SearchRepositoriesModelTests.swift */; };
 		71402019251E31AF007CE443 /* StubError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71402018251E31AF007CE443 /* StubError.swift */; };
@@ -105,6 +107,8 @@
 		712DAF482520AAA200889011 /* SearchRepositoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesCell.swift; sourceTree = "<group>"; };
 		712DAF492520AAA200889011 /* SearchRepositoriesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchRepositoriesCell.xib; sourceTree = "<group>"; };
 		712DAF56252161B900889011 /* Down.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Down.framework; path = Carthage/Build/iOS/Down.framework; sourceTree = "<group>"; };
+		712DAF5D252162D800889011 /* GetReadmeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReadmeRequest.swift; sourceTree = "<group>"; };
+		712DAF612521651E00889011 /* APICustomDecodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICustomDecodeRequest.swift; sourceTree = "<group>"; };
 		71402008251E07F2007CE443 /* StubGitHubAPISearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubGitHubAPISearchRepository.swift; sourceTree = "<group>"; };
 		71402011251E08CF007CE443 /* SearchRepositoriesModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesModelTests.swift; sourceTree = "<group>"; };
 		71402018251E31AF007CE443 /* StubError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubError.swift; sourceTree = "<group>"; };
@@ -245,7 +249,9 @@
 			isa = PBXGroup;
 			children = (
 				712D6839251DAABC000DC884 /* APIRequest.swift */,
+				712DAF612521651E00889011 /* APICustomDecodeRequest.swift */,
 				712D6845251DD1CE000DC884 /* SearchRepositoriesRequest.swift */,
+				712DAF5D252162D800889011 /* GetReadmeRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -599,8 +605,10 @@
 				7140205B251ED9E6007CE443 /* Storyboard.swift in Sources */,
 				712D683A251DAABD000DC884 /* APIRequest.swift in Sources */,
 				712D6854251DD4E2000DC884 /* SearchRepositoriesModel.swift in Sources */,
+				712DAF5E252162D800889011 /* GetReadmeRequest.swift in Sources */,
 				712D6824251DA334000DC884 /* SearchRepositoriesResponse.swift in Sources */,
 				BF0A658D244F2A3B00280FA6 /* RepositoryDetailViewController.swift in Sources */,
+				712DAF622521651E00889011 /* APICustomDecodeRequest.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
 				71402049251E5035007CE443 /* DisposableViewController.swift in Sources */,
 				712DAF442520A96F00889011 /* ImageView.swift in Sources */,
