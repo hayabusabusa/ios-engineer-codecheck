@@ -14,7 +14,7 @@ protocol RepositoryDetailViewModelInput {
 }
 
 protocol RepositoryDetailViewModelOutput {
-    var repositorySignal: Driver<Repository> { get }
+    var repositoryDriver: Driver<Repository> { get }
     var readmeSignal: Signal<String?> { get }
 }
 
@@ -32,7 +32,7 @@ final class RepositoryDetailViewModel: RepositoryDetailViewModelInput, Repositor
     
     // MARK: Properties
     
-    var repositorySignal: Driver<Repository>
+    var repositoryDriver: Driver<Repository>
     var readmeSignal: Signal<String?>
     
     // MARK: Initializer
@@ -41,7 +41,7 @@ final class RepositoryDetailViewModel: RepositoryDetailViewModelInput, Repositor
          model: RepositoryDetailModelProtocol = RepositoryDetailModel()) {
         self.repository         = repository
         self.model              = model
-        self.repositorySignal   = BehaviorRelay<Repository>(value: repository).asDriver()
+        self.repositoryDriver   = BehaviorRelay<Repository>(value: repository).asDriver()
         self.readmeSignal       = model.readmeRelay.asSignal()
     }
     
