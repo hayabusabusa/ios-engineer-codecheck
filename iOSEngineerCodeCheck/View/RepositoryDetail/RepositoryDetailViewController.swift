@@ -23,10 +23,18 @@ class RepositoryDetailViewController: DisposableViewController {
     @IBOutlet private weak var forksLabel: UILabel!
     @IBOutlet private weak var openIssuesLabel: UILabel!
     @IBOutlet private weak var watchersLabel: UILabel!
+    @IBOutlet private weak var collapsibleView: UIView!
+    @IBOutlet private weak var openSafariButton: Button!
     
     // MARK: Properties
     
     private var viewModel: RepositoryDetailViewModel!
+    
+    private lazy var initOnViewDidAppear: Void = {
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut]) {
+            self.collapsibleView.isHidden = false
+        }
+    }()
     
     // MARK: Lifecycle
     
@@ -40,6 +48,11 @@ class RepositoryDetailViewController: DisposableViewController {
         super.viewDidLoad()
         configureLinkButton()
         configureViewModel()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        _ = initOnViewDidAppear
     }
 }
 
@@ -73,10 +86,10 @@ extension RepositoryDetailViewController {
         descriptionLabel.text               = repository.desc
         languageLabel.text                  = repository.language
         languageLabel.superview?.isHidden   = repository.language == nil
-        starsLabel.text                     = "\(repository.stargazersCount) stars"
-        watchersLabel.text                  = "\(repository.watchersCount) watchers"
-        forksLabel.text                     = "\(repository.forksCount) forks"
-        openIssuesLabel.text                = "\(repository.openIssueCount) open issues"
+        starsLabel.text                     = "\(repository.stargazersCount)"
+        watchersLabel.text                  = "\(repository.watchersCount)"
+        forksLabel.text                     = "\(repository.forksCount)"
+        openIssuesLabel.text                = "\(repository.openIssueCount)"
     }
     
     private func bindButton(with repository: Repository) {
