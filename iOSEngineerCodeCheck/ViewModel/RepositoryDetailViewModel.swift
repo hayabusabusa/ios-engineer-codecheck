@@ -11,11 +11,13 @@ import RxCocoa
 
 protocol RepositoryDetailViewModelInput {
     func viewDidLoad()
+    func tappedLinkButton(url: String)
 }
 
 protocol RepositoryDetailViewModelOutput {
     var repositoryDriver: Driver<Repository> { get }
     var readmeSignal: Signal<String?> { get }
+    var presentSafariSignal: Signal<URL> { get }
 }
 
 protocol RepositoryDetailViewModelType {
@@ -34,21 +36,33 @@ final class RepositoryDetailViewModel: RepositoryDetailViewModelInput, Repositor
     
     var repositoryDriver: Driver<Repository>
     var readmeSignal: Signal<String?>
+    var presentSafariSignal: Signal<URL>
+    
+    private let urlRelay: PublishRelay<URL>
     
     // MARK: Initializer
     
     init(repository: Repository,
          model: RepositoryDetailModelProtocol = RepositoryDetailModel()) {
-        self.repository         = repository
-        self.model              = model
-        self.repositoryDriver   = BehaviorRelay<Repository>(value: repository).asDriver()
-        self.readmeSignal       = model.readmeRelay.asSignal()
+        self.repository             = repository
+        self.model                  = model
+        self.urlRelay               = PublishRelay<URL>()
+        self.repositoryDriver       = BehaviorRelay<Repository>(value: repository).asDriver()
+        self.readmeSignal           = model.readmeRelay.asSignal()
+        self.presentSafariSignal    = urlRelay.asSignal()
     }
     
     // MARK: Trigger
     
     func viewDidLoad() {
         model.fetchReadme(of: repository)
+    }
+    
+    func tappedLinkButton(url: String) {
+        guard let url = URL(string: url) else {
+            return
+        }
+        urlRelay.accept(url)
     }
 }
 

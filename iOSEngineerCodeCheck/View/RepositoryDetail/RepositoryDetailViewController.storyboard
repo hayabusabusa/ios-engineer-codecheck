@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="h1D-2d-QSA">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="541"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="539"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eK1-ZN-RUl" userLabel="Header">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="203"/>
@@ -417,10 +417,10 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aoh-vb-igX" userLabel="License">
-                                                <rect key="frame" x="0.0" y="459" width="414" height="82"/>
+                                                <rect key="frame" x="0.0" y="459" width="414" height="80"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LUA-ba-BNr">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="82"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YbO-ls-q8x">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="24"/>
@@ -448,25 +448,8 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QTT-iK-zIS">
-                                                                <rect key="frame" x="0.0" y="32" width="414" height="50"/>
+                                                                <rect key="frame" x="0.0" y="32" width="414" height="48"/>
                                                                 <subviews>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eB4-a6-x2w">
-                                                                        <rect key="frame" x="16" y="8" width="382" height="34"/>
-                                                                        <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="link" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rEY-MK-Hlk">
-                                                                                <rect key="frame" x="0.0" y="4.5" width="24" height="25"/>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="width" constant="24" id="7Mh-SA-4pB"/>
-                                                                                    <constraint firstAttribute="height" constant="24" id="Xdv-gy-po4"/>
-                                                                                </constraints>
-                                                                            </imageView>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keA-P7-xS7" customClass="AlignLeadingButton" customModule="iOSEngineerCodeCheck" customModuleProvider="target">
-                                                                                <rect key="frame" x="32" y="2.5" width="350" height="29"/>
-                                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                                                                <state key="normal" title="Button"/>
-                                                                            </button>
-                                                                        </subviews>
-                                                                    </stackView>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IQd-JW-BfW" userLabel="Separator">
                                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
                                                                         <color key="backgroundColor" systemColor="separatorColor"/>
@@ -475,24 +458,31 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xsX-sk-IEt" userLabel="Separator">
-                                                                        <rect key="frame" x="0.0" y="49" width="414" height="1"/>
+                                                                        <rect key="frame" x="0.0" y="47" width="414" height="1"/>
                                                                         <color key="backgroundColor" systemColor="separatorColor"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="1" id="FvE-It-WGU"/>
                                                                         </constraints>
                                                                     </view>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FUE-Dd-SGI">
+                                                                        <rect key="frame" x="16" y="9" width="382" height="30"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstItem="IQd-JW-BfW" firstAttribute="leading" secondItem="QTT-iK-zIS" secondAttribute="leading" id="2FQ-Cx-kfw"/>
+                                                                    <constraint firstItem="FUE-Dd-SGI" firstAttribute="leading" secondItem="QTT-iK-zIS" secondAttribute="leading" constant="16" id="3Bk-Eg-ftO"/>
                                                                     <constraint firstAttribute="trailing" secondItem="xsX-sk-IEt" secondAttribute="trailing" id="5aA-CO-FKn"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="eB4-a6-x2w" secondAttribute="bottom" constant="8" id="Fj2-fo-7vp"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="eB4-a6-x2w" secondAttribute="trailing" constant="16" id="G1W-Ji-Xfp"/>
+                                                                    <constraint firstItem="xsX-sk-IEt" firstAttribute="top" secondItem="FUE-Dd-SGI" secondAttribute="bottom" constant="8" id="O9E-Rz-9cy"/>
                                                                     <constraint firstItem="xsX-sk-IEt" firstAttribute="leading" secondItem="QTT-iK-zIS" secondAttribute="leading" id="QPM-RX-rxa"/>
-                                                                    <constraint firstItem="eB4-a6-x2w" firstAttribute="leading" secondItem="QTT-iK-zIS" secondAttribute="leading" constant="16" id="Rga-Tb-hBQ"/>
                                                                     <constraint firstAttribute="trailing" secondItem="IQd-JW-BfW" secondAttribute="trailing" id="TFf-Kc-y8f"/>
                                                                     <constraint firstItem="IQd-JW-BfW" firstAttribute="top" secondItem="QTT-iK-zIS" secondAttribute="top" id="Xvq-mg-bSH"/>
-                                                                    <constraint firstItem="eB4-a6-x2w" firstAttribute="top" secondItem="QTT-iK-zIS" secondAttribute="top" constant="8" id="q2E-Sf-MMr"/>
+                                                                    <constraint firstAttribute="height" constant="48" id="bqq-YD-GT9"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="FUE-Dd-SGI" secondAttribute="trailing" constant="16" id="iJ3-Gy-lLF"/>
+                                                                    <constraint firstItem="FUE-Dd-SGI" firstAttribute="top" secondItem="IQd-JW-BfW" secondAttribute="bottom" constant="8" id="y2Q-EH-Ve8"/>
                                                                     <constraint firstAttribute="bottom" secondItem="xsX-sk-IEt" secondAttribute="bottom" id="ytL-TS-ARH"/>
                                                                 </constraints>
                                                             </view>
@@ -590,8 +580,10 @@
                         <outlet property="collapsibleView" destination="Kp0-yv-KpJ" id="qjr-aY-VBm"/>
                         <outlet property="descriptionLabel" destination="NeU-td-C7H" id="0uh-yy-YDM"/>
                         <outlet property="forksLabel" destination="owj-kW-uuf" id="Vo0-QP-4f4"/>
+                        <outlet property="homepageLinkButton" destination="6Mf-zI-mhc" id="SWN-s6-kIJ"/>
                         <outlet property="languageLabel" destination="hnc-6O-tBn" id="UNY-Px-r5D"/>
-                        <outlet property="linkButton" destination="6Mf-zI-mhc" id="SWN-s6-kIJ"/>
+                        <outlet property="layoutLicenseView" destination="Aoh-vb-igX" id="XMl-TF-9UZ"/>
+                        <outlet property="licenseLabel" destination="FUE-Dd-SGI" id="drv-qh-8GA"/>
                         <outlet property="openIssuesLabel" destination="hKS-Q4-vMZ" id="VWS-ok-kdJ"/>
                         <outlet property="openSafariButton" destination="Ktt-qD-73V" id="kZB-qP-Cb8"/>
                         <outlet property="ownerNameLabel" destination="Mi6-qE-1ew" id="GtJ-QS-8tl"/>
