@@ -66,6 +66,31 @@ class SearchRepositoriesModelTests: XCTestCase {
         XCTAssertEqual(testableObserver.events, expression)
     }
     
+    func test_初回データ取得時にロード中を表すフラグが正しく流れることを確認() {
+        let model               = SearchRepositoriesModel(gitHubAPISearchRepository: StubGitHubAPISearchRepository())
+        let disposeBag          = DisposeBag()
+        let scheduler           = TestScheduler(initialClock: 0)
+        let testableObserver    = scheduler.createObserver(Bool.self)
+        
+        scheduler.scheduleAt(100) {
+            model.isLoadingRelay
+                .subscribe(testableObserver)
+                .disposed(by: disposeBag)
+        }
+        
+        scheduler.scheduleAt(200) {
+            model.fetchRepositories(with: "TEST")
+        }
+        
+        scheduler.start()
+        
+        let expression = Recorded.events([
+            .next(200, true),
+            .next(200, false)
+        ])
+        XCTAssertEqual(testableObserver.events, expression)
+    }
+    
     func test_初回データ取得後の次のページを取得した場合にデータが正しく流れることを確認() {
         let model               = SearchRepositoriesModel(gitHubAPISearchRepository: StubGitHubAPISearchRepository())
         let disposeBag          = DisposeBag()

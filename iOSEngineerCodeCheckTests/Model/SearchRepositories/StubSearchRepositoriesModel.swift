@@ -14,6 +14,7 @@ final class StubSearchRepositoriesModel: SearchRepositoriesModelProtocol {
     
     // MARK: Properties
     
+    var isLoadingRelay = PublishRelay<Bool>()
     var repositoriesRelay = BehaviorRelay<[Repository]>(value: [])
     var errorRelay = PublishRelay<Error>()
     
@@ -28,9 +29,11 @@ final class StubSearchRepositoriesModel: SearchRepositoriesModelProtocol {
     // MARK: Call API
     
     func fetchRepositories(with keyword: String) {
+        isLoadingRelay.accept(true)
         isErrorOccured
             ? errorRelay.accept(StubError())
             : repositoriesRelay.accept([Stubs.repository])
+        isLoadingRelay.accept(false)
     }
     
     func fetchNextPage() {
