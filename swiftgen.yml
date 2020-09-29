@@ -1,0 +1,6 @@
+xcassets:
+    inputs: iOSEngineerCodeCheck/Assets.xcassets
+    outputs:
+      - templateName: swift5
+        output: iOSEngineerCodeCheck/Generated/Asset.swift
+        
