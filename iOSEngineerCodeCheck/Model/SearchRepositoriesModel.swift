@@ -66,6 +66,7 @@ final class SearchRepositoriesModel: SearchRepositoriesModelProtocol {
                 self.isLoadingRelay.accept(false)
                 self.repositoriesRelay.accept(response.items)
             }, onError: { [weak self] error in
+                self?.isLoadingRelay.accept(false)
                 self?.errorRelay.accept(error)
             })
             .disposed(by: disposeBag)
