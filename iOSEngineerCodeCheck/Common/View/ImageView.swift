@@ -11,13 +11,13 @@ import UIKit
 class ImageView: UIImageView {
 
     // MARK: IBInspectable
-    
+
     @IBInspectable var cornerRadius: CGFloat = 0
     @IBInspectable var borderWidth: CGFloat = 0
     @IBInspectable var borderColor: UIColor = .clear
 
     // MARK: Initializer
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()

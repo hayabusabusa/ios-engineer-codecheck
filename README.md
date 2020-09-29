@@ -36,11 +36,23 @@ carthage bootstrap --platform iOS
 
 **⚠️ Xcode12 の場合**
 
-2020/9/25 現在、Xcode12 で Carthage のビルドを行うと失敗する場合があります。  
+2020/9/25 現在、Xcode12 で Carthage のビルドを行うと失敗する場合があります。( [公式の issue](https://github.com/Carthage/Carthage/issues/3019) )  
 よってワークアラウンドとしてプロジェクトがあるフォルダで以下のコマンドを実行してビルドを行ってください。
 
 ```Shell
 sh ./carthage-build.sh bootstrap --platform iOS
+```
+
+### Mint
+
+本アプリでは以下のツールを [Mint](https://github.com/yonaskolb/Mint) を利用して管理しています。
+Mint をインストールした上で以下のコマンドを実行し、ツールをインストールしてください。
+
+- [SwiftLint](https://github.com/realm/SwiftLint)
+- [SwiftGen](https://github.com/SwiftGen/SwiftGen)
+
+```Shell
+mint bootstrap
 ```
 
 ## 課題取り組み方法

@@ -13,20 +13,20 @@ protocol GitHubAPISearchRepositoryProtocol {
 }
 
 struct GitHubAPISearchRepository: GitHubAPISearchRepositoryProtocol {
-    
+
     // MARK: Dependency
-    
+
     private let apiClient: APIClientProtocol
-    
+
     // MARK: Initializer
-    
+
     init(apiClient: APIClientProtocol = APIClient.shared) {
         self.apiClient = apiClient
     }
-    
+
     // MARK: Call API
-    
+
     func searchRepositories(keyword: String) -> Single<SearchRepositoriesResponse> {
-        return apiClient.call(with: SearchRepositoriesRequest(keyword: keyword))
+        apiClient.call(with: SearchRepositoriesRequest(keyword: keyword))
     }
 }

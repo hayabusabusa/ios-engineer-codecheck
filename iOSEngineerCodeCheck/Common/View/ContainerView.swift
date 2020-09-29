@@ -11,7 +11,7 @@ import UIKit
 class ContainerView: UIView {
 
     // MARK: IBInspectable
-    
+
     @IBInspectable var cornerRadius: CGFloat = 4
     @IBInspectable var borderWidth: CGFloat = 0
     @IBInspectable var borderColor: UIColor = .clear
@@ -21,7 +21,7 @@ class ContainerView: UIView {
     @IBInspectable var shadowOpacity: Float = 0
 
     // MARK: Initializer
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -40,7 +40,7 @@ class ContainerView: UIView {
         super.prepareForInterfaceBuilder()
         configure()
     }
-    
+
     // MARK: Configuration
 
     private func configure() {

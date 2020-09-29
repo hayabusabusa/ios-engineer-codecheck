@@ -9,7 +9,7 @@
 import UIKit
 
 class AlignLeadingButton: UIButton {
-    
+
     // MARK: Initizalizer
 
     override init(frame: CGRect) {
@@ -30,7 +30,7 @@ class AlignLeadingButton: UIButton {
         super.prepareForInterfaceBuilder()
         configure()
     }
-    
+
     // MARK: Configuration
 
     private func configure() {

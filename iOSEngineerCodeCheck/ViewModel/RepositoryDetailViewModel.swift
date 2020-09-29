@@ -24,29 +24,29 @@ protocol RepositoryDetailViewModelType {
 }
 
 final class RepositoryDetailViewModel: RepositoryDetailViewModelInput, RepositoryDetailViewModelOutput {
-    
+
     // MARK: Dependency
-    
+
     private let repository: Repository
-    
+
     // MARK: Properties
-    
+
     var repositoryDriver: Driver<Repository>
     var presentSafariSignal: Signal<URL>
-    
+
     private let urlRelay: PublishRelay<URL>
-    
+
     // MARK: Initializer
-    
+
     init(repository: Repository) {
-        self.repository             = repository
-        self.urlRelay               = PublishRelay<URL>()
-        self.repositoryDriver       = BehaviorRelay<Repository>(value: repository).asDriver()
-        self.presentSafariSignal    = urlRelay.asSignal()
+        self.repository = repository
+        self.urlRelay = PublishRelay<URL>()
+        self.repositoryDriver = BehaviorRelay<Repository>(value: repository).asDriver()
+        self.presentSafariSignal = urlRelay.asSignal()
     }
-    
+
     // MARK: Trigger
-    
+
     func tappedLinkButton(url: String) {
         guard let url = URL(string: url) else {
             return

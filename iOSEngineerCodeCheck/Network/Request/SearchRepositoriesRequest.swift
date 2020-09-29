@@ -10,23 +10,23 @@ import Alamofire
 
 struct SearchRepositoriesRequest: APIRequest {
     typealias Response = SearchRepositoriesResponse
-    
+
     let keyword: String
-    
+
     var path: String {
-        return "/search/repositories"
+        "/search/repositories"
     }
-    
+
     var method: HTTPMethod {
-        return .get
+        .get
     }
-    
+
     var encoding: ParameterEncoding {
-        return URLEncoding.queryString
+        URLEncoding.queryString
     }
-    
+
     var parameters: Parameters? {
-        return [
+        [
             "q": keyword
         ]
     }

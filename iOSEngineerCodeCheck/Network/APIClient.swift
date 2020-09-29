@@ -15,20 +15,20 @@ protocol APIClientProtocol: AnyObject {
 }
 
 final class APIClient: APIClientProtocol {
-    
+
     // MARK: Singleton
-    
+
     static let shared: APIClient = .init()
-    
+
     // MARK: Initializer
-    
+
     private init() {}
-    
+
     // MARK: Call
-    
+
     func call<T: APIRequest>(with request: T) -> Single<T.Response> {
-        return Single.create { observer in
-            let url     = request.endpoint + request.path
+        Single.create { observer in
+            let url = request.endpoint + request.path
             let request = AF.request(url,
                                      method: request.method,
                                      parameters: request.parameters,
@@ -55,10 +55,10 @@ final class APIClient: APIClientProtocol {
             }
         }
     }
-    
+
     func call<T: APICustomDecodeRequest>(with request: T) -> Single<T.Response> {
-        return Single.create { observer in
-            let url     = request.endpoint + request.path
+        Single.create { observer in
+            let url = request.endpoint + request.path
             let request = AF.request(url,
                                      method: request.method,
                                      parameters: request.parameters,

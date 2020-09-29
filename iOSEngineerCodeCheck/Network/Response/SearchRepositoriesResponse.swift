@@ -11,7 +11,7 @@ import Foundation
 struct SearchRepositoriesResponse: Decodable {
     let totalCount: Int
     let items: [Repository]
-    
+
     private enum CodingKeys: String, CodingKey {
         case totalCount = "total_count"
         case items

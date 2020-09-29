@@ -11,7 +11,7 @@ import UIKit
 class Button: UIButton {
 
     // MARK: IBInspectable
-    
+
     @IBInspectable var cornerRadius: CGFloat = 0
     @IBInspectable var borderColor: UIColor = .clear
     @IBInspectable var borderWidth: CGFloat = 0
@@ -21,7 +21,7 @@ class Button: UIButton {
     @IBInspectable var shadowOpacity: Float = 0
 
     // MARK: Overrides
-    
+
     override var isEnabled: Bool {
         didSet {
             alpha = isEnabled ? 1 : 0.4
@@ -46,7 +46,7 @@ class Button: UIButton {
         super.prepareForInterfaceBuilder()
         configure()
     }
-    
+
     // MARK: Configuration
 
     private func configure() {
