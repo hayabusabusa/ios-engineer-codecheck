@@ -55,6 +55,12 @@ extension SearchRepositoriesViewController {
         let viewModel = SearchRepositoriesViewModel()
         self.viewModel = viewModel
 
+        tableView.rx.reachedBottom.asSignal()
+            .emit(onNext: { [weak self] in
+                self?.viewModel.input.didReachBottom()
+            })
+            .disposed(by: disposeBag)
+
         viewModel.output.repositoriesDriver
             .drive(tableView.rx.items) { tableView, row, element in
                 let cell = tableView.dequeueReusableCell(withIdentifier: SearchRepositoriesCell.reuseIdentifier, for: IndexPath(row: row, section: 0)) as! SearchRepositoriesCell // swiftlint:disable:this force_cast

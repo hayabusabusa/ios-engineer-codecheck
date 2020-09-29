@@ -9,7 +9,7 @@
 import RxSwift
 
 protocol GitHubAPISearchRepositoryProtocol {
-    func searchRepositories(keyword: String) -> Single<SearchRepositoriesResponse>
+    func searchRepositories(keyword: String, page: Int) -> Single<SearchRepositoriesResponse>
 }
 
 struct GitHubAPISearchRepository: GitHubAPISearchRepositoryProtocol {
@@ -26,7 +26,7 @@ struct GitHubAPISearchRepository: GitHubAPISearchRepositoryProtocol {
 
     // MARK: Call API
 
-    func searchRepositories(keyword: String) -> Single<SearchRepositoriesResponse> {
-        apiClient.call(with: SearchRepositoriesRequest(keyword: keyword))
+    func searchRepositories(keyword: String, page: Int) -> Single<SearchRepositoriesResponse> {
+        apiClient.call(with: SearchRepositoriesRequest(keyword: keyword, page: page))
     }
 }

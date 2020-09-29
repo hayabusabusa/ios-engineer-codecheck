@@ -12,6 +12,7 @@ struct SearchRepositoriesRequest: APIRequest {
     typealias Response = SearchRepositoriesResponse
 
     let keyword: String
+    let page: Int
 
     var path: String {
         "/search/repositories"
@@ -27,7 +28,8 @@ struct SearchRepositoriesRequest: APIRequest {
 
     var parameters: Parameters? {
         [
-            "q": keyword
+            "q": keyword,
+            "page": page
         ]
     }
 }

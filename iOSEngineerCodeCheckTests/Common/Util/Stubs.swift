@@ -22,7 +22,7 @@ enum Stubs {
                                        license: RepositoryLicense(key: "Stub", name: "Stub", spdxID: "Stub"),
                                        forksCount: 1,
                                        openIssueCount: 1)
-    static let searchRepositoriesResponse = SearchRepositoriesResponse(totalCount: 1,
+    static let searchRepositoriesResponse = SearchRepositoriesResponse(totalCount: 2,
                                                                        items: [
                                                                         Repository(name: "Stub",
                                                                                    fullName: "Stub",
