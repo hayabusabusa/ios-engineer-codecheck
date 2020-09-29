@@ -48,7 +48,7 @@ class SearchRepositoriesViewModelTests: XCTestCase {
         
         scheduler.scheduleAt(100) {
             viewModel.output.pushRepositoryDetailSignal
-                // NOTE: 比較のために `fullName` を取り出して `String` の配列で比較
+                // NOTE: 比較のために `fullName` を取り出して `String` で比較
                 .map { $0.fullName }
                 .emit(to: testableObserver)
                 .disposed(by: disposeBag)
@@ -66,6 +66,75 @@ class SearchRepositoriesViewModelTests: XCTestCase {
         
         let expression = Recorded.events([
             .next(300, "Stub")
+        ])
+        XCTAssertEqual(testableObserver.events, expression)
+    }
+    
+    func test_次のページ読み込みが発生した場合の正しくデータが流れてくることを確認() {
+        let viewModel           = SearchRepositoriesViewModel(model: StubSearchRepositoriesModel())
+        let disposeBag          = DisposeBag()
+        let scheduler           = TestScheduler(initialClock: 0)
+        let testableObserver    = scheduler.createObserver([String].self)
+        
+        scheduler.scheduleAt(100) {
+            viewModel.output.repositoriesDriver
+                // NOTE: 比較のために `fullName` を取り出して `String` の配列で比較
+                .map { $0.map { $0.fullName } }
+                .drive(testableObserver)
+                .disposed(by: disposeBag)
+        }
+        
+        scheduler.scheduleAt(200) {
+            viewModel.input.searchBarSearchButtonClicked(keyword: "TEST")
+        }
+        
+        scheduler.scheduleAt(300) {
+            viewModel.input.didReachBottom()
+        }
+        
+        scheduler.start()
+        
+        let expression = Recorded.events([
+            .next(100, []),
+            .next(200, ["Stub"]),
+            .next(300, ["Stub", "Stub"])
+        ])
+        XCTAssertEqual(testableObserver.events, expression)
+    }
+    
+    func test_ページネーション実行後再度検索を行った場合にデータがリフレッシュされていることを確認() {
+        let viewModel           = SearchRepositoriesViewModel(model: StubSearchRepositoriesModel())
+        let disposeBag          = DisposeBag()
+        let scheduler           = TestScheduler(initialClock: 0)
+        let testableObserver    = scheduler.createObserver([String].self)
+        
+        scheduler.scheduleAt(100) {
+            viewModel.output.repositoriesDriver
+                // NOTE: 比較のために `fullName` を取り出して `String` の配列で比較
+                .map { $0.map { $0.fullName } }
+                .drive(testableObserver)
+                .disposed(by: disposeBag)
+        }
+        
+        scheduler.scheduleAt(200) {
+            viewModel.input.searchBarSearchButtonClicked(keyword: "TEST")
+        }
+        
+        scheduler.scheduleAt(300) {
+            viewModel.input.didReachBottom()
+        }
+        
+        scheduler.scheduleAt(400) {
+            viewModel.input.searchBarSearchButtonClicked(keyword: "TEST")
+        }
+        
+        scheduler.start()
+        
+        let expression = Recorded.events([
+            .next(100, []),
+            .next(200, ["Stub"]),
+            .next(300, ["Stub", "Stub"]),
+            .next(400, ["Stub"])
         ])
         XCTAssertEqual(testableObserver.events, expression)
     }
