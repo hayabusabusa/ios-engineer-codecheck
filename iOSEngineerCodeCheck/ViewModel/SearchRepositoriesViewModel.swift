@@ -49,7 +49,7 @@ final class SearchRepositoriesViewModel: SearchRepositoriesViewModelInput, Searc
     init(model: SearchRepositoriesModelProtocol = SearchRepositoriesModel()) {
         self.model = model
 
-        let combinedDataSourceStream = Observable.zip(
+        let zippedDataSourceStream = Observable.zip(
             model.repositoriesRelay,
             model.isReachLastPageRelay
         )
@@ -68,7 +68,7 @@ final class SearchRepositoriesViewModel: SearchRepositoriesViewModelInput, Searc
             model.errorRelay.map { _ in StateView.State.error }
         )
 
-        self.dataSourceDriver = combinedDataSourceStream.asDriver(onErrorDriveWith: .empty())
+        self.dataSourceDriver = zippedDataSourceStream.asDriver(onErrorDriveWith: .empty())
         self.stateDriver = mergedStateStream.asDriver(onErrorDriveWith: .empty())
         self.pushRepositoryDetailRelay = PublishRelay<Repository>()
     }
