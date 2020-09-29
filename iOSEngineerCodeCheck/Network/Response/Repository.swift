@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct Repository: Decodable {
+struct Repository: Decodable, Equatable {
+    let id: Int
     let name: String
     let fullName: String
     let desc: String?
@@ -23,6 +24,7 @@ struct Repository: Decodable {
     let openIssueCount: Int
 
     private enum CodingKeys: String, CodingKey {
+        case id
         case name
         case fullName           = "full_name"
         case desc               = "description"
@@ -35,5 +37,9 @@ struct Repository: Decodable {
         case license
         case forksCount         = "forks_count"
         case openIssueCount     = "open_issues_count"
+    }
+
+    static func == (lhs: Repository, rhs: Repository) -> Bool {
+        lhs.id == rhs.id
     }
 }

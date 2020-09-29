@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum SearchRepositoriesCellType {
+enum SearchRepositoriesCellType: Equatable {
     case item(with: Repository)
     case indicator
 }
