@@ -43,7 +43,7 @@ final class SearchRepositoriesModel: SearchRepositoriesModelProtocol {
     // MARK: Call API
 
     func fetchRepositories(with keyword: String) {
-        gitHubAPISearchRepository.searchRepositories(keyword: keyword)
+        gitHubAPISearchRepository.searchRepositories(keyword: keyword, page: 1)
             .subscribe(onSuccess: { [weak self] response in
                 self?.repositoriesRelay.accept(response.items)
             }, onError: { [weak self] error in
