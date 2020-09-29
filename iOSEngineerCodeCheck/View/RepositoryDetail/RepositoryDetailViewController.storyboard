@@ -98,8 +98,8 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="6dK-Aq-pxa" userLabel="Link Stack View">
                                                                 <rect key="frame" x="0.0" y="151" width="382" height="20"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="link" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tW9-jT-Ds3">
-                                                                        <rect key="frame" x="0.0" y="-0.5" width="20" height="21"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_link" translatesAutoresizingMaskIntoConstraints="NO" id="tW9-jT-Ds3">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="20" id="3a6-B4-z6T"/>
                                                                             <constraint firstAttribute="width" constant="20" id="E73-t6-Cqb"/>
@@ -148,8 +148,8 @@
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QXg-X2-6g4" customClass="ContainerView" customModule="iOSEngineerCodeCheck" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
                                                                                 <subviews>
-                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="911-fc-ymx">
-                                                                                        <rect key="frame" x="4" y="3.5" width="24" height="24"/>
+                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star_blank" translatesAutoresizingMaskIntoConstraints="NO" id="911-fc-ymx">
+                                                                                        <rect key="frame" x="4" y="4" width="24" height="24"/>
                                                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     </imageView>
                                                                                 </subviews>
@@ -225,8 +225,8 @@
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1NR-ia-NwZ" customClass="ContainerView" customModule="iOSEngineerCodeCheck" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
                                                                                 <subviews>
-                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="repeat" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cjh-RG-gnD">
-                                                                                        <rect key="frame" x="4" y="5" width="24" height="21.5"/>
+                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_repo_fork" translatesAutoresizingMaskIntoConstraints="NO" id="cjh-RG-gnD">
+                                                                                        <rect key="frame" x="4" y="4" width="24" height="24"/>
                                                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     </imageView>
                                                                                 </subviews>
@@ -292,8 +292,8 @@
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8x3-sE-mld" customClass="ContainerView" customModule="iOSEngineerCodeCheck" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
                                                                                 <subviews>
-                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Mt6-5j-l5h">
-                                                                                        <rect key="frame" x="4" y="4.5" width="24" height="23"/>
+                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_info" translatesAutoresizingMaskIntoConstraints="NO" id="Mt6-5j-l5h">
+                                                                                        <rect key="frame" x="4" y="4" width="24" height="24"/>
                                                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     </imageView>
                                                                                 </subviews>
@@ -359,8 +359,8 @@
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ncH-S8-GXB" customClass="ContainerView" customModule="iOSEngineerCodeCheck" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
                                                                                 <subviews>
-                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eye" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lRp-k6-Eda">
-                                                                                        <rect key="frame" x="4" y="5.5" width="24" height="20.5"/>
+                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_eye_check" translatesAutoresizingMaskIntoConstraints="NO" id="lRp-k6-Eda">
+                                                                                        <rect key="frame" x="4" y="4" width="24" height="24"/>
                                                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     </imageView>
                                                                                 </subviews>
@@ -432,8 +432,8 @@
                                                                             <constraint firstAttribute="width" constant="8" id="ChK-qx-0Ts"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dwP-KO-8lz">
-                                                                        <rect key="frame" x="16" y="0.5" width="24" height="23"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_balance" translatesAutoresizingMaskIntoConstraints="NO" id="dwP-KO-8lz">
+                                                                        <rect key="frame" x="16" y="0.0" width="24" height="24"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="24" id="64M-vc-gBQ"/>
                                                                             <constraint firstAttribute="width" constant="24" id="den-A1-VHe"/>
@@ -598,12 +598,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bookmark.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="eye" catalog="system" width="128" height="81"/>
-        <image name="info.circle" catalog="system" width="128" height="121"/>
-        <image name="link" catalog="system" width="128" height="122"/>
-        <image name="repeat" catalog="system" width="128" height="99"/>
-        <image name="star" catalog="system" width="128" height="116"/>
+        <image name="ic_balance" width="24" height="24"/>
+        <image name="ic_eye_check" width="24" height="24"/>
+        <image name="ic_info" width="24" height="24"/>
+        <image name="ic_link" width="24" height="24"/>
+        <image name="ic_repo_fork" width="24" height="24"/>
+        <image name="ic_star_blank" width="24" height="24"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
