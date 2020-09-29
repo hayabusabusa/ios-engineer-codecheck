@@ -12,7 +12,7 @@ struct RepositoryLicense: Decodable {
     let key: String
     let name: String
     let spdxID: String
-    
+
     private enum CodingKeys: String, CodingKey {
         case key
         case name

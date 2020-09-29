@@ -21,7 +21,7 @@ struct Repository: Decodable {
     let license: RepositoryLicense?
     let forksCount: Int
     let openIssueCount: Int
-    
+
     private enum CodingKeys: String, CodingKey {
         case name
         case fullName           = "full_name"

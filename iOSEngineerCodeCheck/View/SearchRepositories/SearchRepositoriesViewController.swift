@@ -10,21 +10,21 @@ import UIKit
 import RxCocoa
 
 class SearchRepositoriesViewController: DisposableViewController {
-    
+
     // MARK: IBOutlet
-    
+
     @IBOutlet private weak var tableView: UITableView!
-    
+
     // MARK: Properties
-    
+
     private var viewModel: SearchRepositoriesViewModel!
-    
+
     // MARK: Lifecycle
-    
+
     static func instantiate() -> SearchRepositoriesViewController {
-        return Storyboard.SearchRepositoriesViewController.instantiate(SearchRepositoriesViewController.self)
+        Storyboard.SearchRepositoriesViewController.instantiate(SearchRepositoriesViewController.self)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigation()
@@ -36,28 +36,28 @@ class SearchRepositoriesViewController: DisposableViewController {
 // MARK: - Configurations
 
 extension SearchRepositoriesViewController {
-    
+
     private func configureNavigation() {
-        let searchBar                   = UISearchBar(frame: navigationController?.navigationBar.frame ?? .zero)
-        searchBar.delegate              = self
+        let searchBar = UISearchBar(frame: navigationController?.navigationBar.frame ?? .zero)
+        searchBar.delegate = self
         searchBar.placeholder           = "リポジトリを検索"
-        navigationItem.titleView        = searchBar
+        navigationItem.titleView = searchBar
         navigationItem.titleView?.frame = searchBar.frame
     }
-    
+
     private func configureTableView() {
-        tableView.delegate  = self
+        tableView.delegate = self
         tableView.rowHeight = SearchRepositoriesCell.rowHeight
         tableView.register(SearchRepositoriesCell.nib, forCellReuseIdentifier: SearchRepositoriesCell.reuseIdentifier)
     }
-    
+
     private func configureViewModel() {
-        let viewModel   = SearchRepositoriesViewModel()
-        self.viewModel  = viewModel
-        
+        let viewModel = SearchRepositoriesViewModel()
+        self.viewModel = viewModel
+
         viewModel.output.repositoriesDriver
             .drive(tableView.rx.items) { tableView, row, element in
-                let cell = tableView.dequeueReusableCell(withIdentifier: SearchRepositoriesCell.reuseIdentifier, for: IndexPath(row: row, section: 0)) as! SearchRepositoriesCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: SearchRepositoriesCell.reuseIdentifier, for: IndexPath(row: row, section: 0)) as! SearchRepositoriesCell // swiftlint:disable:this force_cast
                 cell.configureCell(title: element.fullName, desc: element.desc, stars: "\(element.stargazersCount)", language: element.language, avatarURL: element.owner.avatarURL)
                 return cell
             }
@@ -74,25 +74,25 @@ extension SearchRepositoriesViewController {
 // MARK: - SearchBar Delegate
 
 extension SearchRepositoriesViewController: UISearchBarDelegate {
-    
+
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         searchBar.setShowsCancelButton(true, animated: true)
         return true
     }
-    
+
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.setShowsCancelButton(false, animated: true)
     }
-    
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let keyword = searchBar.text,
-              keyword.count != 0 else {
+              !keyword.isEmpty else {
             return
         }
-        
+
         viewModel.input.searchBarSearchButtonClicked(keyword: keyword)
-        
+
         searchBar.resignFirstResponder()
         searchBar.setShowsCancelButton(false, animated: true)
     }
@@ -101,7 +101,7 @@ extension SearchRepositoriesViewController: UISearchBarDelegate {
 // MARK: - TableView Delegate
 
 extension SearchRepositoriesViewController: UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         viewModel.input.didSelectRow(at: indexPath)

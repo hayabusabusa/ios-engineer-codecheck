@@ -10,7 +10,7 @@ import Foundation
 
 struct RepositoryOwner: Decodable {
     let avatarURL: String
-    
+
     private enum CodingKeys: String, CodingKey {
         case avatarURL = "avatar_url"
     }

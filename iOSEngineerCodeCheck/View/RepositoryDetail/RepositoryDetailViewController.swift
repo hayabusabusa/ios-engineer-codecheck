@@ -11,9 +11,9 @@ import Kingfisher
 import SafariServices
 
 class RepositoryDetailViewController: DisposableViewController {
-    
+
     // MARK: IBOutlet
-    
+
     @IBOutlet private weak var avatarImageView: UIImageView!
     @IBOutlet private weak var ownerNameLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
@@ -28,28 +28,28 @@ class RepositoryDetailViewController: DisposableViewController {
     @IBOutlet private weak var layoutLicenseView: UIView!
     @IBOutlet private weak var collapsibleView: UIView!
     @IBOutlet private weak var openSafariButton: UIButton!
-    
+
     // MARK: Properties
-    
+
     private var viewModel: RepositoryDetailViewModel!
     private lazy var initOnViewDidAppear: Void = {
         showOpenSafariButtonWithAnimation()
     }()
-    
+
     // MARK: Lifecycle
-    
+
     static func configure(with repository: Repository) -> RepositoryDetailViewController {
-        let vc          = Storyboard.RepositoryDetailViewController.instantiate(RepositoryDetailViewController.self)
-        vc.viewModel    = RepositoryDetailViewModel(repository: repository)
+        let vc = Storyboard.RepositoryDetailViewController.instantiate(RepositoryDetailViewController.self)
+        vc.viewModel = RepositoryDetailViewModel(repository: repository)
         return vc
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLinkButton()
         configureViewModel()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         _ = initOnViewDidAppear
@@ -59,11 +59,11 @@ class RepositoryDetailViewController: DisposableViewController {
 // MARK: - Configurations
 
 extension RepositoryDetailViewController {
-    
+
     private func configureLinkButton() {
         homepageLinkButton.contentHorizontalAlignment = .leading
     }
-    
+
     private func configureViewModel() {
         viewModel.output.repositoryDriver
             .drive(onNext: { [weak self] repository in
@@ -83,20 +83,20 @@ extension RepositoryDetailViewController {
 // MARK: - Bind ViewModel
 
 extension RepositoryDetailViewController {
-    
+
     private func bindLabels(with repository: Repository) {
-        navigationItem.title                = repository.fullName
-        ownerNameLabel.text                 = repository.owner.login
-        titleLabel.text                     = repository.name
-        descriptionLabel.text               = repository.desc
-        languageLabel.text                  = repository.language
-        languageLabel.superview?.isHidden   = repository.language == nil
+        navigationItem.title = repository.fullName
+        ownerNameLabel.text = repository.owner.login
+        titleLabel.text = repository.name
+        descriptionLabel.text = repository.desc
+        languageLabel.text = repository.language
+        languageLabel.superview?.isHidden = repository.language == nil
         starsLabel.text                     = "\(repository.stargazersCount)"
         watchersLabel.text                  = "\(repository.watchersCount)"
         forksLabel.text                     = "\(repository.forksCount)"
         openIssuesLabel.text                = "\(repository.openIssueCount)"
     }
-    
+
     private func bindButtons(with repository: Repository) {
         homepageLinkButton.superview?.isHidden = repository.homepage == nil || (repository.homepage ?? "").isEmpty
         homepageLinkButton.setTitle(repository.homepage, for: .normal)
@@ -105,17 +105,17 @@ extension RepositoryDetailViewController {
                 self?.viewModel.input.tappedLinkButton(url: repository.homepage ?? "")
             })
             .disposed(by: disposeBag)
-        
-        layoutLicenseView.isHidden  = repository.license == nil
-        licenseLabel.text           = repository.license?.name
-        
+
+        layoutLicenseView.isHidden = repository.license == nil
+        licenseLabel.text = repository.license?.name
+
         openSafariButton.rx.tap.asSignal()
             .emit(onNext: { [weak self] in
                 self?.viewModel.input.tappedLinkButton(url: repository.htmlURL)
             })
             .disposed(by: disposeBag)
     }
-    
+
     private func bindImageView(with repository: Repository) {
         guard let avatarURL = URL(string: repository.owner.avatarURL) else {
             return
@@ -127,7 +127,7 @@ extension RepositoryDetailViewController {
 // MARK: - Animation
 
 extension RepositoryDetailViewController {
-    
+
     private func showOpenSafariButtonWithAnimation() {
         UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseInOut]) {
             self.collapsibleView.isHidden = false
@@ -138,7 +138,7 @@ extension RepositoryDetailViewController {
 // MARK: - Transition
 
 extension RepositoryDetailViewController {
-    
+
     private func presentSafari(url: URL) {
         let vc = SFSafariViewController(url: url)
         present(vc, animated: true, completion: nil)

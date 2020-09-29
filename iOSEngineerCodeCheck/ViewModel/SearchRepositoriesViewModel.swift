@@ -25,36 +25,36 @@ protocol  SearchRepositoriesViewModelType {
 }
 
 final class SearchRepositoriesViewModel: SearchRepositoriesViewModelInput, SearchRepositoriesViewModelOutput {
-    
+
     // MARK: Dependency
-    
+
     private let model: SearchRepositoriesModelProtocol
-    
+
     // MARK: Properties
-    
+
     private let pushRepositoryDetailRelay: PublishRelay<Repository>
-    
+
     // MARK: Output
-    
+
     var repositoriesDriver: Driver<[Repository]>
     var pushRepositoryDetailSignal: Signal<Repository> {
-        return pushRepositoryDetailRelay.asSignal()
+        pushRepositoryDetailRelay.asSignal()
     }
-    
+
     // MARK: Initializer
-    
+
     init(model: SearchRepositoriesModelProtocol = SearchRepositoriesModel()) {
-        self.model                      = model
-        self.pushRepositoryDetailRelay  = PublishRelay<Repository>()
-        self.repositoriesDriver         = model.repositoriesRelay.asDriver()
+        self.model = model
+        self.pushRepositoryDetailRelay = PublishRelay<Repository>()
+        self.repositoriesDriver = model.repositoriesRelay.asDriver()
     }
-    
+
     // MARK: Trigger
-    
+
     func searchBarSearchButtonClicked(keyword: String) {
         model.fetchRepositories(with: keyword)
     }
-    
+
     func didSelectRow(at indexPath: IndexPath) {
         pushRepositoryDetailRelay.accept(model.repositoriesRelay.value[indexPath.row])
     }

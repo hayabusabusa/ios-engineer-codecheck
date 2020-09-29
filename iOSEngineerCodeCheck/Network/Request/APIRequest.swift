@@ -10,7 +10,7 @@ import Alamofire
 
 protocol APIRequest {
     associatedtype Response: Decodable
-    
+
     var endpoint: String { get }
     var path: String { get }
     var method: Alamofire.HTTPMethod { get }
@@ -21,24 +21,24 @@ protocol APIRequest {
 }
 
 extension APIRequest {
-    
+
     var endpoint: String {
-        return "https://api.github.com"
+        "https://api.github.com"
     }
-    
+
     var encoding: Alamofire.ParameterEncoding {
-        return JSONEncoding.default
+        JSONEncoding.default
     }
-    
+
     var parameters: Alamofire.Parameters? {
-        return nil
+        nil
     }
-    
+
     var headers: Alamofire.HTTPHeaders? {
-        return nil
+        nil
     }
-    
+
     var sampleData: Response? {
-        return nil
+        nil
     }
 }

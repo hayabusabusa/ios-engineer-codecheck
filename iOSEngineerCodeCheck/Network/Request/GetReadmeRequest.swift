@@ -10,22 +10,22 @@ import Alamofire
 
 struct GetReadmeRequest: APICustomDecodeRequest {
     typealias Response = String?
-    
+
     let ownerName: String
     let repositoryName: String
-    
+
     var endpoint: String {
-        return "https://raw.githubusercontent.com"
+        "https://raw.githubusercontent.com"
     }
-    
+
     var path: String {
-        return "/\(ownerName)/\(repositoryName)/master/README.md"
+        "/\(ownerName)/\(repositoryName)/master/README.md"
     }
-    
+
     var method: HTTPMethod {
-        return .get
+        .get
     }
-    
+
     func decode(from data: Data?) throws -> String? {
         guard let data = data else {
             return nil
