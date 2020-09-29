@@ -46,6 +46,9 @@ final class StubSearchRepositoriesModel: SearchRepositoriesModelProtocol {
     }
     
     func fetchNextPage() {
+        guard !isReachLastPageRelay.value else {
+            return
+        }
         currentPage += 1
         isReachLastPageRelay.accept(currentPage == numberOfPage)
         repositoriesRelay.accept(repositoriesRelay.value + [Stubs.repository])
