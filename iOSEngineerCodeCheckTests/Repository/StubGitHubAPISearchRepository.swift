@@ -23,7 +23,7 @@ struct StubGitHubAPISearchRepository: GitHubAPISearchRepositoryProtocol {
     
     // MARK: Call API
     
-    func searchRepositories(keyword: String) -> Single<SearchRepositoriesResponse> {
+    func searchRepositories(keyword: String, page: Int) -> Single<SearchRepositoriesResponse> {
         return isErrorOccurred
             ? Single.error(StubError())
             : Single.just(Stubs.searchRepositoriesResponse)

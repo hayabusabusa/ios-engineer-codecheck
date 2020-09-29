@@ -65,4 +65,73 @@ class SearchRepositoriesModelTests: XCTestCase {
         ])
         XCTAssertEqual(testableObserver.events, expression)
     }
+    
+    func test_初回データ取得後の次のページを取得した場合にデータが正しく流れることを確認() {
+        let model               = SearchRepositoriesModel(gitHubAPISearchRepository: StubGitHubAPISearchRepository())
+        let disposeBag          = DisposeBag()
+        let scheduler           = TestScheduler(initialClock: 0)
+        let testableObserver    = scheduler.createObserver([String].self)
+        
+        scheduler.scheduleAt(100) {
+            model.repositoriesRelay
+                // NOTE: 比較のために `fullName` を取り出して `String` の配列で比較
+                .map { $0.map { $0.fullName } }
+                .subscribe(testableObserver)
+                .disposed(by: disposeBag)
+        }
+        
+        scheduler.scheduleAt(200) {
+            model.fetchRepositories(with: "TEST")
+        }
+        
+        scheduler.scheduleAt(300) {
+            model.fetchNextPage()
+        }
+        
+        scheduler.start()
+        
+        let expression = Recorded.events([
+            .next(100, []),
+            .next(200, ["Stub"]),
+            .next(300, ["Stub", "Stub"])
+        ])
+        XCTAssertEqual(testableObserver.events, expression)
+    }
+    
+    func test_最終ページに達した場合は次のページを取得しようとしないことを確認() {
+        let model               = SearchRepositoriesModel(gitHubAPISearchRepository: StubGitHubAPISearchRepository())
+        let disposeBag          = DisposeBag()
+        let scheduler           = TestScheduler(initialClock: 0)
+        let testableObserver    = scheduler.createObserver([String].self)
+        
+        scheduler.scheduleAt(100) {
+            model.repositoriesRelay
+                // NOTE: 比較のために `fullName` を取り出して `String` の配列で比較
+                .map { $0.map { $0.fullName } }
+                .subscribe(testableObserver)
+                .disposed(by: disposeBag)
+        }
+        
+        scheduler.scheduleAt(200) {
+            model.fetchRepositories(with: "TEST")
+        }
+        
+        scheduler.scheduleAt(300) {
+            model.fetchNextPage()
+        }
+        
+        scheduler.scheduleAt(400) {
+            // NOTE: 最大ページに達したためデータの取得は行われず、`next` のイベントは流れない
+            model.fetchNextPage()
+        }
+        
+        scheduler.start()
+        
+        let expression = Recorded.events([
+            .next(100, []),
+            .next(200, ["Stub"]),
+            .next(300, ["Stub", "Stub"]),
+        ])
+        XCTAssertEqual(testableObserver.events, expression)
+    }
 }

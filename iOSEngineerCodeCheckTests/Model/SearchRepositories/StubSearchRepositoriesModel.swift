@@ -32,4 +32,8 @@ final class StubSearchRepositoriesModel: SearchRepositoriesModelProtocol {
             ? errorRelay.accept(StubError())
             : repositoriesRelay.accept([Stubs.repository])
     }
+    
+    func fetchNextPage() {
+        repositoriesRelay.accept(repositoriesRelay.value + [Stubs.repository])
+    }
 }
