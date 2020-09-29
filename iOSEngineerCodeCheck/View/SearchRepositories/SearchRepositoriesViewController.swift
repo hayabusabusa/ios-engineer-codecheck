@@ -40,7 +40,7 @@ extension SearchRepositoriesViewController {
     private func configureNavigation() {
         let searchBar = UISearchBar(frame: navigationController?.navigationBar.frame ?? .zero)
         searchBar.delegate = self
-        searchBar.placeholder           = "リポジトリを検索"
+        searchBar.placeholder = "リポジトリを検索"
         navigationItem.titleView = searchBar
         navigationItem.titleView?.frame = searchBar.frame
     }

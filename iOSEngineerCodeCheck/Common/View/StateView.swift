@@ -20,7 +20,7 @@ extension StateViewable {
     func setupStateView() {
         stateView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stateView)
-        
+
         NSLayoutConstraint.activate([
             stateView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -32),
             stateView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
@@ -31,28 +31,28 @@ extension StateViewable {
 
 /// ロード中、エラーの発生などを表示する View.
 class StateView: UIView {
-    
+
     // MARK: Enum
-    
+
     enum State {
         case none
         case loading
         case empty
         case error
     }
-    
+
     // MARK: Properties
-    
+
     private var emptyImage: UIImage?
     private var emptyTitle: String?
     private var emptyContent: String?
-    
+
     private var errorImage: UIImage?
     private var errorTitle: String?
     private var errorContent: String?
-    
+
     // MARK: Views
-    
+
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.alpha = 0
@@ -64,7 +64,7 @@ class StateView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    
+
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = emptyImage
@@ -73,7 +73,7 @@ class StateView: UIView {
         imageView.heightAnchor.constraint(equalToConstant: 108).isActive = true
         return imageView
     }()
-    
+
     private lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.text = emptyTitle
@@ -83,7 +83,7 @@ class StateView: UIView {
         titleLabel.font = .systemFont(ofSize: 16, weight: .bold)
         return titleLabel
     }()
-    
+
     private lazy var contentLabel: UILabel = {
         let contentLabel = UILabel()
         contentLabel.text = emptyContent
@@ -93,7 +93,7 @@ class StateView: UIView {
         contentLabel.font = .systemFont(ofSize: 14, weight: .regular)
         return contentLabel
     }()
-    
+
     private lazy var indicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
         indicator.alpha = 0
@@ -101,14 +101,14 @@ class StateView: UIView {
         indicator.translatesAutoresizingMaskIntoConstraints = false
         return indicator
     }()
-    
+
     // MARK: Lifecycle
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
-    
+
     init(frame: CGRect,
          emptyImage: UIImage? = nil,
          emptyTitle: String? = nil,
@@ -149,7 +149,7 @@ class StateView: UIView {
 // MARK: - Private method
 
 extension StateView {
-    
+
     private func setupViews() {
         // StackView
         addSubview(stackView)
@@ -172,13 +172,13 @@ extension StateView {
             indicator.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
-    
+
     private func animateIndicator(isHidden: Bool) {
         // NOTE: Start activity indicator.
         if !isHidden {
             indicator.startAnimating()
         }
-        
+
         UIView.animate(withDuration: 0.5,
                        delay: 0,
                        options: .curveEaseInOut,
@@ -193,7 +193,7 @@ extension StateView {
                         }
                        })
     }
-    
+
     private func animateStackView(isHidden: Bool) {
         UIView.animate(withDuration: 0.5,
                        delay: 0,
@@ -210,7 +210,7 @@ extension StateView {
 // MARK: - Public method
 
 extension StateView {
-    
+
     func setState(of state: State) {
         isHidden = state == .none
         imageView.image = state == .error ? errorImage : emptyImage
