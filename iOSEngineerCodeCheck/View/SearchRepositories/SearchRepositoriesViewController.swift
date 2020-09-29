@@ -51,12 +51,12 @@ extension SearchRepositoriesViewController {
     func configureStateView() {
         setupStateView()
         stateView.updateStyle(emptyTitle: "検索結果がありません。", emptyContent: "キーワードを入力して検索してください。", errorTitle: "予期しないエラーが発生しました。")
-        stateView.setState(of: .empty)
     }
 
     private func configureTableView() {
         tableView.alpha = 0
         tableView.delegate = self
+        tableView.tableFooterView = UIView()
         tableView.rowHeight = SearchRepositoriesCell.rowHeight
         tableView.register(SearchRepositoriesCell.nib, forCellReuseIdentifier: SearchRepositoriesCell.reuseIdentifier)
     }
