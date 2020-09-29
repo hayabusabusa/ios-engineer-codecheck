@@ -58,6 +58,7 @@ extension SearchRepositoriesViewController {
         tableView.delegate = self
         tableView.tableFooterView = UIView()
         tableView.rowHeight = SearchRepositoriesCell.rowHeight
+        tableView.register(IndicatorCell.nib, forCellReuseIdentifier: IndicatorCell.reuseIdentifier)
         tableView.register(SearchRepositoriesCell.nib, forCellReuseIdentifier: SearchRepositoriesCell.reuseIdentifier)
     }
 
@@ -71,11 +72,18 @@ extension SearchRepositoriesViewController {
             })
             .disposed(by: disposeBag)
 
-        viewModel.output.repositoriesDriver
+        viewModel.output.dataSourceDriver
             .drive(tableView.rx.items) { tableView, row, element in
-                let cell = tableView.dequeueReusableCell(withIdentifier: SearchRepositoriesCell.reuseIdentifier, for: IndexPath(row: row, section: 0)) as! SearchRepositoriesCell // swiftlint:disable:this force_cast
-                cell.configureCell(title: element.fullName, desc: element.desc, stars: "\(element.stargazersCount)", language: element.language, avatarURL: element.owner.avatarURL)
-                return cell
+                switch element {
+                case .item(let repository):
+                    let cell = tableView.dequeueReusableCell(withIdentifier: SearchRepositoriesCell.reuseIdentifier, for: IndexPath(row: row, section: 0)) as! SearchRepositoriesCell // swiftlint:disable:this force_cast
+                    cell.configureCell(title: repository.fullName, desc: repository.desc, stars: "\(repository.stargazersCount)", language: repository.language, avatarURL: repository.owner.avatarURL)
+                    return cell
+                case .indicator:
+                    let cell = tableView.dequeueReusableCell(withIdentifier: IndicatorCell.reuseIdentifier, for: IndexPath(row: row, section: 0)) as! IndicatorCell // swiftlint:disable:this force_cast
+                    cell.configureCell()
+                    return cell
+                }
             }
             .disposed(by: disposeBag)
         viewModel.output.stateDriver

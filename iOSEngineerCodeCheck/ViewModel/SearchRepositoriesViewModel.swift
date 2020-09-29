@@ -16,7 +16,7 @@ protocol SearchRepositoriesViewModelInput {
 }
 
 protocol  SearchRepositoriesViewModelOutput {
-    var repositoriesDriver: Driver<[Repository]> { get }
+    var dataSourceDriver: Driver<[SearchRepositoriesCellType]> { get }
     var stateDriver: Driver<StateView.State> { get }
     var pushRepositoryDetailSignal: Signal<Repository> { get }
 }
@@ -38,7 +38,7 @@ final class SearchRepositoriesViewModel: SearchRepositoriesViewModelInput, Searc
 
     // MARK: Output
 
-    var repositoriesDriver: Driver<[Repository]>
+    var dataSourceDriver: Driver<[SearchRepositoriesCellType]>
     var stateDriver: Driver<StateView.State>
     var pushRepositoryDetailSignal: Signal<Repository> {
         pushRepositoryDetailRelay.asSignal()
@@ -49,6 +49,16 @@ final class SearchRepositoriesViewModel: SearchRepositoriesViewModelInput, Searc
     init(model: SearchRepositoriesModelProtocol = SearchRepositoriesModel()) {
         self.model = model
 
+        let combinedDataSourceStream = Observable.zip(
+            model.repositoriesRelay,
+            model.isReachLastPageRelay
+        )
+        .map { repositories, isReachLastPage -> [SearchRepositoriesCellType] in
+            // NOTE: 取得したリポジトリ一覧 + 最終ページに到達していない場合はインジケータのセルの配列にマップ
+            let items = repositories.map { SearchRepositoriesCellType.item(with: $0) }
+            return items + (isReachLastPage ? [] : [SearchRepositoriesCellType.indicator])
+        }
+
         let mergedStateStream = Observable.merge(
             // NOTE: 検索後ロード中 or 検索のロードが完了が流れる
             model.isLoadingRelay.map { $0 ? StateView.State.loading : StateView.State.none },
@@ -58,9 +68,9 @@ final class SearchRepositoriesViewModel: SearchRepositoriesViewModelInput, Searc
             model.errorRelay.map { _ in StateView.State.error }
         )
 
-        self.pushRepositoryDetailRelay = PublishRelay<Repository>()
+        self.dataSourceDriver = combinedDataSourceStream.asDriver(onErrorDriveWith: .empty())
         self.stateDriver = mergedStateStream.asDriver(onErrorDriveWith: .empty())
-        self.repositoriesDriver = model.repositoriesRelay.asDriver()
+        self.pushRepositoryDetailRelay = PublishRelay<Repository>()
     }
 
     // MARK: Trigger

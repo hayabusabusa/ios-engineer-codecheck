@@ -11,26 +11,26 @@ import UIKit
 class IndicatorCell: UITableViewCell {
 
     @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
-    
+
     // MARK: Properties
-    
+
     static let reuseIdentifier = "IndicatorCell"
     static var nib: UINib {
-        return UINib(nibName: "IndicatorCell", bundle: nil)
+        UINib(nibName: "IndicatorCell", bundle: nil)
     }
-    
+
     // MARK: Overrides
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
+
     // MARK: Configurations
-    
+
     func configureCell() {
         activityIndicatorView.startAnimating()
     }
