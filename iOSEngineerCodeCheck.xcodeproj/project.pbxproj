@@ -52,6 +52,9 @@
 		715A62562522B82E003AC0E2 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715A62552522B82E003AC0E2 /* Asset.swift */; };
 		715A625D2522C14E003AC0E2 /* UIScrollView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715A625C2522C14E003AC0E2 /* UIScrollView+Rx.swift */; };
 		715A62652522EB10003AC0E2 /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715A62642522EB10003AC0E2 /* StateView.swift */; };
+		715A627025230F87003AC0E2 /* SearchRepositoriesCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715A626F25230F87003AC0E2 /* SearchRepositoriesCellType.swift */; };
+		715A627525231030003AC0E2 /* IndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715A627325231030003AC0E2 /* IndicatorCell.swift */; };
+		715A627625231030003AC0E2 /* IndicatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 715A627425231030003AC0E2 /* IndicatorCell.xib */; };
 		BF0A658D244F2A3B00280FA6 /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */; };
 		BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945DE244DC5E80012785A /* AppDelegate.swift */; };
 		BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945E0244DC5E80012785A /* SceneDelegate.swift */; };
@@ -137,6 +140,9 @@
 		715A62552522B82E003AC0E2 /* Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		715A625C2522C14E003AC0E2 /* UIScrollView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Rx.swift"; sourceTree = "<group>"; };
 		715A62642522EB10003AC0E2 /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
+		715A626F25230F87003AC0E2 /* SearchRepositoriesCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesCellType.swift; sourceTree = "<group>"; };
+		715A627325231030003AC0E2 /* IndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorCell.swift; sourceTree = "<group>"; };
+		715A627425231030003AC0E2 /* IndicatorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndicatorCell.xib; sourceTree = "<group>"; };
 		BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSEngineerCodeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD945DE244DC5E80012785A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -292,8 +298,11 @@
 		712DAF472520AA7D00889011 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				715A626F25230F87003AC0E2 /* SearchRepositoriesCellType.swift */,
 				712DAF482520AAA200889011 /* SearchRepositoriesCell.swift */,
 				712DAF492520AAA200889011 /* SearchRepositoriesCell.xib */,
+				715A627325231030003AC0E2 /* IndicatorCell.swift */,
+				715A627425231030003AC0E2 /* IndicatorCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -591,6 +600,7 @@
 				712DAF4B2520AAA200889011 /* SearchRepositoriesCell.xib in Resources */,
 				71402055251ED72C007CE443 /* RepositoryDetailViewController.storyboard in Resources */,
 				7140204F251E5198007CE443 /* SearchRepositoriesViewController.storyboard in Resources */,
+				715A627625231030003AC0E2 /* IndicatorCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -681,7 +691,9 @@
 				715A625D2522C14E003AC0E2 /* UIScrollView+Rx.swift in Sources */,
 				715A62562522B82E003AC0E2 /* Asset.swift in Sources */,
 				71402024251E4381007CE443 /* SearchRepositoriesViewModel.swift in Sources */,
+				715A627525231030003AC0E2 /* IndicatorCell.swift in Sources */,
 				712D67FE251D9D26000DC884 /* RepositoryOwner.swift in Sources */,
+				715A627025230F87003AC0E2 /* SearchRepositoriesCellType.swift in Sources */,
 				BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */,
 				715A62292521F791003AC0E2 /* ContainerView.swift in Sources */,
 				712D6889251E035B000DC884 /* GitHubAPISearchRepository.swift in Sources */,
