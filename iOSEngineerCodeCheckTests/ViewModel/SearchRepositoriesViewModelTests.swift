@@ -13,16 +13,14 @@ import RxTest
 
 class SearchRepositoriesViewModelTests: XCTestCase {
     
-    func test_検索実行後にAPIから取得したデータが正しく流れることを確認() {
+    func test_検索実行後に表示用のデータが正しく流れることを確認() {
         let viewModel           = SearchRepositoriesViewModel(model: StubSearchRepositoriesModel())
         let disposeBag          = DisposeBag()
         let scheduler           = TestScheduler(initialClock: 0)
-        let testableObserver    = scheduler.createObserver([String].self)
+        let testableObserver    = scheduler.createObserver([SearchRepositoriesCellType].self)
         
         scheduler.scheduleAt(100) {
-            viewModel.output.repositoriesDriver
-                // NOTE: 比較のために `fullName` を取り出して `String` の配列で比較
-                .map { $0.map { $0.fullName } }
+            viewModel.output.dataSourceDriver
                 .drive(testableObserver)
                 .disposed(by: disposeBag)
         }
@@ -33,14 +31,14 @@ class SearchRepositoriesViewModelTests: XCTestCase {
         
         scheduler.start()
         
-        let expression = Recorded.events([
+        let expression: [Recorded<Event<[SearchRepositoriesCellType]>>] = Recorded.events([
             .next(100, []),
-            .next(200, ["Stub"])
+            .next(200, [.item(with: Stubs.repository), .indicator])
         ])
         XCTAssertEqual(testableObserver.events, expression)
     }
     
-    func test_検索実行後表示されているリスト選択時に選択したデータが正しく流れてくることを確認() {
+    func test_検索実行後表示されているリスト選択時に選択したデータが正しく流れることを確認() {
         let viewModel           = SearchRepositoriesViewModel(model: StubSearchRepositoriesModel())
         let disposeBag          = DisposeBag()
         let scheduler           = TestScheduler(initialClock: 0)
@@ -74,12 +72,10 @@ class SearchRepositoriesViewModelTests: XCTestCase {
         let viewModel           = SearchRepositoriesViewModel(model: StubSearchRepositoriesModel())
         let disposeBag          = DisposeBag()
         let scheduler           = TestScheduler(initialClock: 0)
-        let testableObserver    = scheduler.createObserver([String].self)
+        let testableObserver    = scheduler.createObserver([SearchRepositoriesCellType].self)
         
         scheduler.scheduleAt(100) {
-            viewModel.output.repositoriesDriver
-                // NOTE: 比較のために `fullName` を取り出して `String` の配列で比較
-                .map { $0.map { $0.fullName } }
+            viewModel.output.dataSourceDriver
                 .drive(testableObserver)
                 .disposed(by: disposeBag)
         }
@@ -94,10 +90,10 @@ class SearchRepositoriesViewModelTests: XCTestCase {
         
         scheduler.start()
         
-        let expression = Recorded.events([
+        let expression: [Recorded<Event<[SearchRepositoriesCellType]>>] = Recorded.events([
             .next(100, []),
-            .next(200, ["Stub"]),
-            .next(300, ["Stub", "Stub"])
+            .next(200, [.item(with: Stubs.repository), .indicator]),
+            .next(300, [.item(with: Stubs.repository), .item(with: Stubs.repository)])
         ])
         XCTAssertEqual(testableObserver.events, expression)
     }
@@ -106,12 +102,10 @@ class SearchRepositoriesViewModelTests: XCTestCase {
         let viewModel           = SearchRepositoriesViewModel(model: StubSearchRepositoriesModel())
         let disposeBag          = DisposeBag()
         let scheduler           = TestScheduler(initialClock: 0)
-        let testableObserver    = scheduler.createObserver([String].self)
+        let testableObserver    = scheduler.createObserver([SearchRepositoriesCellType].self)
         
         scheduler.scheduleAt(100) {
-            viewModel.output.repositoriesDriver
-                // NOTE: 比較のために `fullName` を取り出して `String` の配列で比較
-                .map { $0.map { $0.fullName } }
+            viewModel.output.dataSourceDriver
                 .drive(testableObserver)
                 .disposed(by: disposeBag)
         }
@@ -130,11 +124,11 @@ class SearchRepositoriesViewModelTests: XCTestCase {
         
         scheduler.start()
         
-        let expression = Recorded.events([
+        let expression: [Recorded<Event<[SearchRepositoriesCellType]>>] = Recorded.events([
             .next(100, []),
-            .next(200, ["Stub"]),
-            .next(300, ["Stub", "Stub"]),
-            .next(400, ["Stub"])
+            .next(200, [.item(with: Stubs.repository), .indicator]),
+            .next(300, [.item(with: Stubs.repository), .item(with: Stubs.repository)]),
+            .next(400, [.item(with: Stubs.repository), .indicator])
         ])
         XCTAssertEqual(testableObserver.events, expression)
     }
