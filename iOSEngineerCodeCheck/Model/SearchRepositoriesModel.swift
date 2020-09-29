@@ -13,6 +13,9 @@ protocol SearchRepositoriesModelProtocol: AnyObject {
     /// GitHub の API `/search/repositories` から返ってきたリポジトリ一覧が流れる `BehaviorRelay`
     var repositoriesRelay: BehaviorRelay<[Repository]> { get }
 
+    /// 検索後実行後のロード中かどうかを表すフラグが流れてくる `PublishRelay`
+    var isLoadingRelay: PublishRelay<Bool> { get }
+
     /// 通信時等にエラーが発生した場合にエラーが流れる `PublishRelay`
     var errorRelay: PublishRelay<Error> { get }
 
@@ -33,6 +36,7 @@ final class SearchRepositoriesModel: SearchRepositoriesModelProtocol {
     // MARK: Properties
 
     var repositoriesRelay = BehaviorRelay<[Repository]>(value: [])
+    var isLoadingRelay = PublishRelay<Bool>()
     var errorRelay = PublishRelay<Error>()
 
     private var keyword = ""
@@ -51,6 +55,7 @@ final class SearchRepositoriesModel: SearchRepositoriesModelProtocol {
     // MARK: Call API
 
     func fetchRepositories(with keyword: String) {
+        isLoadingRelay.accept(true)
         gitHubAPISearchRepository.searchRepositories(keyword: keyword, page: currentPage)
             .subscribe(onSuccess: { [weak self] response in
                 guard let self = self else {
@@ -58,6 +63,7 @@ final class SearchRepositoriesModel: SearchRepositoriesModelProtocol {
                 }
                 self.keyword = keyword
                 self.isReachLastPage = response.totalCount == self.currentPage
+                self.isLoadingRelay.accept(false)
                 self.repositoriesRelay.accept(response.items)
             }, onError: { [weak self] error in
                 self?.errorRelay.accept(error)

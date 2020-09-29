@@ -17,6 +17,7 @@ protocol SearchRepositoriesViewModelInput {
 
 protocol  SearchRepositoriesViewModelOutput {
     var repositoriesDriver: Driver<[Repository]> { get }
+    var stateDriver: Driver<StateView.State> { get }
     var pushRepositoryDetailSignal: Signal<Repository> { get }
 }
 
@@ -38,6 +39,7 @@ final class SearchRepositoriesViewModel: SearchRepositoriesViewModelInput, Searc
     // MARK: Output
 
     var repositoriesDriver: Driver<[Repository]>
+    var stateDriver: Driver<StateView.State>
     var pushRepositoryDetailSignal: Signal<Repository> {
         pushRepositoryDetailRelay.asSignal()
     }
@@ -46,7 +48,18 @@ final class SearchRepositoriesViewModel: SearchRepositoriesViewModelInput, Searc
 
     init(model: SearchRepositoriesModelProtocol = SearchRepositoriesModel()) {
         self.model = model
+
+        let mergedStateStream = Observable.merge(
+            // NOTE: 検索後ロード中 or 検索のロードが完了が流れる
+            model.isLoadingRelay.map { $0 ? StateView.State.loading : StateView.State.none },
+            // NOTE: 検索結果が空の時のみイベントが流れる
+            model.repositoriesRelay.filter { $0.isEmpty }.map { _ in StateView.State.empty },
+            // NOTE: エラー発生時にイベントが流れる
+            model.errorRelay.map { _ in StateView.State.error }
+        )
+
         self.pushRepositoryDetailRelay = PublishRelay<Repository>()
+        self.stateDriver = mergedStateStream.asDriver(onErrorDriveWith: .empty())
         self.repositoriesDriver = model.repositoriesRelay.asDriver()
     }
 

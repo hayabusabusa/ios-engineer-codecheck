@@ -211,6 +211,20 @@ extension StateView {
 
 extension StateView {
 
+    func updateStyle(emptyImage: UIImage? = nil,
+                     emptyTitle: String? = nil,
+                     emptyContent: String? = nil,
+                     errorImage: UIImage? = nil,
+                     errorTitle: String? = nil,
+                     errorContent: String? = nil) {
+        self.emptyImage = emptyImage
+        self.emptyTitle = emptyTitle
+        self.emptyContent = emptyContent
+        self.errorImage = errorImage
+        self.errorTitle = errorTitle
+        self.errorContent = errorContent
+    }
+
     func setState(of state: State) {
         isHidden = state == .none
         imageView.image = state == .error ? errorImage : emptyImage

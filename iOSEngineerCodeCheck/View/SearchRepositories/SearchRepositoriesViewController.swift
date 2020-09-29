@@ -9,13 +9,15 @@
 import UIKit
 import RxCocoa
 
-class SearchRepositoriesViewController: DisposableViewController {
+class SearchRepositoriesViewController: DisposableViewController, StateViewable {
 
     // MARK: IBOutlet
 
     @IBOutlet private weak var tableView: UITableView!
 
     // MARK: Properties
+
+    var stateView = StateView()
 
     private var viewModel: SearchRepositoriesViewModel!
 
@@ -29,6 +31,7 @@ class SearchRepositoriesViewController: DisposableViewController {
         super.viewDidLoad()
         configureNavigation()
         configureTableView()
+        configureStateView()
         configureViewModel()
     }
 }
@@ -45,7 +48,14 @@ extension SearchRepositoriesViewController {
         navigationItem.titleView?.frame = searchBar.frame
     }
 
+    func configureStateView() {
+        setupStateView()
+        stateView.updateStyle(emptyTitle: "検索結果がありません。", emptyContent: "キーワードを入力して検索してください。", errorTitle: "予期しないエラーが発生しました。")
+        stateView.setState(of: .empty)
+    }
+
     private func configureTableView() {
+        tableView.alpha = 0
         tableView.delegate = self
         tableView.rowHeight = SearchRepositoriesCell.rowHeight
         tableView.register(SearchRepositoriesCell.nib, forCellReuseIdentifier: SearchRepositoriesCell.reuseIdentifier)
@@ -68,12 +78,33 @@ extension SearchRepositoriesViewController {
                 return cell
             }
             .disposed(by: disposeBag)
+        viewModel.output.stateDriver
+            .drive(onNext: { [weak self] state in
+                self?.bindTableView(with: state != .none)
+                self?.bindStateView(with: state)
+            })
+            .disposed(by: disposeBag)
         viewModel.output.pushRepositoryDetailSignal
             .emit(onNext: { [weak self] repository in
                 let vc = RepositoryDetailViewController.configure(with: repository)
                 self?.navigationController?.pushViewController(vc, animated: true)
             })
             .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - Binding
+
+extension SearchRepositoriesViewController {
+
+    private func bindTableView(with isHidden: Bool) {
+        UIView.animate(withDuration: 0.3) {
+            self.tableView.alpha = isHidden ? 0 : 1
+        }
+    }
+
+    private func bindStateView(with state: StateView.State) {
+        stateView.setState(of: state)
     }
 }
 

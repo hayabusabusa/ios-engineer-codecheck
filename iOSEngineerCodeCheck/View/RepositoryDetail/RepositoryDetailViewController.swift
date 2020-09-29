@@ -80,7 +80,7 @@ extension RepositoryDetailViewController {
     }
 }
 
-// MARK: - Bind ViewModel
+// MARK: - Binding
 
 extension RepositoryDetailViewController {
 
