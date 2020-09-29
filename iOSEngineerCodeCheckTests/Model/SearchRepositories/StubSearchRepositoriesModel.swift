@@ -14,23 +14,28 @@ final class StubSearchRepositoriesModel: SearchRepositoriesModelProtocol {
     
     // MARK: Properties
     
+    var isLoadingRelay = PublishRelay<Bool>()
     var repositoriesRelay = BehaviorRelay<[Repository]>(value: [])
     var errorRelay = PublishRelay<Error>()
     
     private let isErrorOccured: Bool
+    private let isRepositoriesEmpty: Bool
     
     // MARK: Initializer
     
-    init(isErrorOccured: Bool = false) {
+    init(isErrorOccured: Bool = false, isRepositoriesEmpty: Bool = false) {
         self.isErrorOccured = isErrorOccured
+        self.isRepositoriesEmpty = isRepositoriesEmpty
     }
     
     // MARK: Call API
     
     func fetchRepositories(with keyword: String) {
+        isLoadingRelay.accept(true)
+        isLoadingRelay.accept(false)
         isErrorOccured
             ? errorRelay.accept(StubError())
-            : repositoriesRelay.accept([Stubs.repository])
+            : repositoriesRelay.accept(isRepositoriesEmpty ? [] : [Stubs.repository])
     }
     
     func fetchNextPage() {

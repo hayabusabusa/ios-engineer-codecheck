@@ -138,4 +138,84 @@ class SearchRepositoriesViewModelTests: XCTestCase {
         ])
         XCTAssertEqual(testableObserver.events, expression)
     }
+    
+    func test_検索実行から完了までのStateの値が正しいことを確認() {
+        let viewModel           = SearchRepositoriesViewModel(model: StubSearchRepositoriesModel())
+        let disposeBag          = DisposeBag()
+        let scheduler           = TestScheduler(initialClock: 0)
+        let testableObserver    = scheduler.createObserver(StateView.State.self)
+        
+        scheduler.scheduleAt(100) {
+            viewModel.output.stateDriver
+                .drive(testableObserver)
+                .disposed(by: disposeBag)
+        }
+
+        scheduler.scheduleAt(200) {
+            viewModel.input.searchBarSearchButtonClicked(keyword: "TEST")
+        }
+        
+        scheduler.start()
+        
+        let expression = Recorded.events([
+            .next(100, StateView.State.empty),
+            .next(200, StateView.State.loading),
+            .next(200, StateView.State.none)
+        ])
+        XCTAssertEqual(testableObserver.events, expression)
+    }
+    
+    func test_検索結果が何もなかった場合のStateの値が正しいことを確認() {
+        let viewModel           = SearchRepositoriesViewModel(model: StubSearchRepositoriesModel(isRepositoriesEmpty: true))
+        let disposeBag          = DisposeBag()
+        let scheduler           = TestScheduler(initialClock: 0)
+        let testableObserver    = scheduler.createObserver(StateView.State.self)
+        
+        scheduler.scheduleAt(100) {
+            viewModel.output.stateDriver
+                .drive(testableObserver)
+                .disposed(by: disposeBag)
+        }
+
+        scheduler.scheduleAt(200) {
+            viewModel.input.searchBarSearchButtonClicked(keyword: "TEST")
+        }
+        
+        scheduler.start()
+        
+        let expression = Recorded.events([
+            .next(100, StateView.State.empty),
+            .next(200, StateView.State.loading),
+            .next(200, StateView.State.none),
+            .next(200, StateView.State.empty)
+        ])
+        XCTAssertEqual(testableObserver.events, expression)
+    }
+    
+    func test_検索実行時にエラーが発生した場合のStateの値が正しいことを確認() {
+        let viewModel           = SearchRepositoriesViewModel(model: StubSearchRepositoriesModel(isErrorOccured: true))
+        let disposeBag          = DisposeBag()
+        let scheduler           = TestScheduler(initialClock: 0)
+        let testableObserver    = scheduler.createObserver(StateView.State.self)
+        
+        scheduler.scheduleAt(100) {
+            viewModel.output.stateDriver
+                .drive(testableObserver)
+                .disposed(by: disposeBag)
+        }
+
+        scheduler.scheduleAt(200) {
+            viewModel.input.searchBarSearchButtonClicked(keyword: "TEST")
+        }
+        
+        scheduler.start()
+        
+        let expression = Recorded.events([
+            .next(100, StateView.State.empty),
+            .next(200, StateView.State.loading),
+            .next(200, StateView.State.none),
+            .next(200, StateView.State.error)
+        ])
+        XCTAssertEqual(testableObserver.events, expression)
+    }
 }

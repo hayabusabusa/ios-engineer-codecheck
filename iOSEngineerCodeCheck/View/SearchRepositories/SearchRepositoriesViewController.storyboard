@@ -23,7 +23,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sXZ-tK-R4I"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="sXS-Sg-TAM" firstAttribute="top" secondItem="sXZ-tK-R4I" secondAttribute="top" id="1gS-gd-9qu"/>
                             <constraint firstAttribute="bottom" secondItem="sXS-Sg-TAM" secondAttribute="bottom" id="DLZ-oD-egx"/>
@@ -60,9 +60,6 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
