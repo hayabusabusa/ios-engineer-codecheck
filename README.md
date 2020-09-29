@@ -130,3 +130,7 @@ ProjectRoot
     ┠ Common # ユーティリティや Extension
     ┗ Generated # SwiftGen で生成されたファイル
 ```
+
+## デザイン
+
+本アプリのデザインは [Figma](https://www.figma.com/file/Aox3FBXA4uPl6nWPHbyq02/Yumemi-iOS-Engineer-Code-Check?node-id=0%3A1) で作成しました。  
