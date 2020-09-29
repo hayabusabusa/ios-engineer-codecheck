@@ -12,6 +12,7 @@ import RxCocoa
 protocol SearchRepositoriesViewModelInput {
     func searchBarSearchButtonClicked(keyword: String)
     func didSelectRow(at indexPath: IndexPath)
+    func didReachBottom()
 }
 
 protocol  SearchRepositoriesViewModelOutput {
@@ -57,6 +58,10 @@ final class SearchRepositoriesViewModel: SearchRepositoriesViewModelInput, Searc
 
     func didSelectRow(at indexPath: IndexPath) {
         pushRepositoryDetailRelay.accept(model.repositoriesRelay.value[indexPath.row])
+    }
+
+    func didReachBottom() {
+        model.fetchNextPage()
     }
 }
 

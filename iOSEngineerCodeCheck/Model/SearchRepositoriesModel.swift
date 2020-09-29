@@ -19,6 +19,9 @@ protocol SearchRepositoriesModelProtocol: AnyObject {
     /// GitHub の API `/search/repositories` へリクエストを送信する
     /// - Parameter keyword: 検索時に使用するキーワード
     func fetchRepositories(with keyword: String)
+
+    /// 現在の検索結果の次のページを取得する
+    func fetchNextPage()
 }
 
 final class SearchRepositoriesModel: SearchRepositoriesModelProtocol {
@@ -32,6 +35,11 @@ final class SearchRepositoriesModel: SearchRepositoriesModelProtocol {
     var repositoriesRelay = BehaviorRelay<[Repository]>(value: [])
     var errorRelay = PublishRelay<Error>()
 
+    private var keyword = ""
+    private var currentPage = 1
+    private var isReachLastPage = false
+    private var isFetchingNextPage = false
+
     private let disposeBag = DisposeBag()
 
     // MARK: Initializer
@@ -43,9 +51,37 @@ final class SearchRepositoriesModel: SearchRepositoriesModelProtocol {
     // MARK: Call API
 
     func fetchRepositories(with keyword: String) {
-        gitHubAPISearchRepository.searchRepositories(keyword: keyword, page: 1)
+        gitHubAPISearchRepository.searchRepositories(keyword: keyword, page: currentPage)
             .subscribe(onSuccess: { [weak self] response in
-                self?.repositoriesRelay.accept(response.items)
+                guard let self = self else {
+                    return
+                }
+                self.keyword = keyword
+                self.isReachLastPage = response.totalCount == self.currentPage
+                self.repositoriesRelay.accept(response.items)
+            }, onError: { [weak self] error in
+                self?.errorRelay.accept(error)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    func fetchNextPage() {
+        guard !isFetchingNextPage && !isReachLastPage && !keyword.isEmpty else {
+            return
+        }
+
+        isFetchingNextPage = true
+
+        let nextPage = currentPage + 1
+        gitHubAPISearchRepository.searchRepositories(keyword: keyword, page: nextPage)
+            .subscribe(onSuccess: { [weak self] response in
+                guard let self = self else {
+                    return
+                }
+                self.currentPage = nextPage
+                self.isReachLastPage = response.totalCount == self.currentPage
+                self.isFetchingNextPage = false
+                self.repositoriesRelay.accept(self.repositoriesRelay.value + response.items)
             }, onError: { [weak self] error in
                 self?.errorRelay.accept(error)
             })

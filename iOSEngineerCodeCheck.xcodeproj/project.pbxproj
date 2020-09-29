@@ -50,6 +50,7 @@
 		715A62412522A745003AC0E2 /* SearchRepositoriesModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715A623F2522A745003AC0E2 /* SearchRepositoriesModelTests.swift */; };
 		715A62422522A745003AC0E2 /* StubSearchRepositoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715A62402522A745003AC0E2 /* StubSearchRepositoriesModel.swift */; };
 		715A62562522B82E003AC0E2 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715A62552522B82E003AC0E2 /* Asset.swift */; };
+		715A625D2522C14E003AC0E2 /* UIScrollView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715A625C2522C14E003AC0E2 /* UIScrollView+Rx.swift */; };
 		BF0A658D244F2A3B00280FA6 /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */; };
 		BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945DE244DC5E80012785A /* AppDelegate.swift */; };
 		BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945E0244DC5E80012785A /* SceneDelegate.swift */; };
@@ -133,6 +134,7 @@
 		715A623F2522A745003AC0E2 /* SearchRepositoriesModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesModelTests.swift; sourceTree = "<group>"; };
 		715A62402522A745003AC0E2 /* StubSearchRepositoriesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubSearchRepositoriesModel.swift; sourceTree = "<group>"; };
 		715A62552522B82E003AC0E2 /* Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
+		715A625C2522C14E003AC0E2 /* UIScrollView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Rx.swift"; sourceTree = "<group>"; };
 		BF0A658C244F2A3B00280FA6 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSEngineerCodeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD945DE244DC5E80012785A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 		71402046251E501D007CE443 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				715A625B2522C141003AC0E2 /* Extension */,
 				71402047251E5025007CE443 /* View */,
 			);
 			path = Common;
@@ -401,6 +404,14 @@
 				715A62552522B82E003AC0E2 /* Asset.swift */,
 			);
 			path = Generated;
+			sourceTree = "<group>";
+		};
+		715A625B2522C141003AC0E2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				715A625C2522C14E003AC0E2 /* UIScrollView+Rx.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		BFD945D2244DC5E80012785A = {
@@ -663,6 +674,7 @@
 				715A622D252200D6003AC0E2 /* Button.swift in Sources */,
 				712DAF4A2520AAA200889011 /* SearchRepositoriesCell.swift in Sources */,
 				712D67F6251D9CEE000DC884 /* Repository.swift in Sources */,
+				715A625D2522C14E003AC0E2 /* UIScrollView+Rx.swift in Sources */,
 				715A62562522B82E003AC0E2 /* Asset.swift in Sources */,
 				71402024251E4381007CE443 /* SearchRepositoriesViewModel.swift in Sources */,
 				712D67FE251D9D26000DC884 /* RepositoryOwner.swift in Sources */,
