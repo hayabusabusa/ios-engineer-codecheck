@@ -91,10 +91,10 @@ extension RepositoryDetailViewController {
         descriptionLabel.text = repository.desc
         languageLabel.text = repository.language
         languageLabel.superview?.isHidden = repository.language == nil
-        starsLabel.text                     = "\(repository.stargazersCount)"
-        watchersLabel.text                  = "\(repository.watchersCount)"
-        forksLabel.text                     = "\(repository.forksCount)"
-        openIssuesLabel.text                = "\(repository.openIssueCount)"
+        starsLabel.text = "\(repository.stargazersCount)"
+        watchersLabel.text = "\(repository.watchersCount)"
+        forksLabel.text = "\(repository.forksCount)"
+        openIssuesLabel.text = "\(repository.openIssueCount)"
     }
 
     private func bindButtons(with repository: Repository) {

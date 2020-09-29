@@ -48,7 +48,8 @@ final class RepositoryDetailViewModel: RepositoryDetailViewModelInput, Repositor
     // MARK: Trigger
 
     func tappedLinkButton(url: String) {
-        guard let url = URL(string: url) else {
+        guard url.hasPrefix("http"),
+              let url = URL(string: url) else {
             return
         }
         urlRelay.accept(url)
